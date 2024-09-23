@@ -9,7 +9,8 @@
     "lint": "npx eslint .",
     "lintfix": "npx eslint . --fix",
     "format": "npx prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
-    "update": "npx npm-check -u"
+    "update": "npx npm-check -u",
+    "docs": "npx typedoc --entryPointStrategy expand ./src --name NHL-API --out ./docs"
   },
   "keywords": [
     "nhl"
@@ -17,13 +18,13 @@
   "author": "Matt Strenk",
   "license": "GPL-3.0",
   "devDependencies": {
-    "@types/axios": "^0.14.0",
     "@types/node": "^22.5.5",
     "eslint": "^9.11.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "npm-check": "^6.0.1",
     "prettier": "^3.3.3",
+    "typedoc": "^0.26.7",
     "typescript": "^5.6.2",
     "typescript-eslint": "^8.6.0"
   },
