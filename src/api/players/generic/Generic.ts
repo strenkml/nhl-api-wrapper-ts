@@ -5,8 +5,9 @@ import {
   IPlayerGameLogOutput,
   IPlayerInfoInput,
   IPlayerInfoOutput,
+  IPlayerSpotlightOutput,
 } from "../../../interfaces/Players";
-import { BASE_URL, IResponse, sendGetRequest } from "../../../internal/Requests";
+import { BASE_URL, IResponse, sendGetRequest, sendGetRequestWithoutParams } from "../../../internal/Requests";
 
 /**
  * Retrieve the game log for a specific player, season, and game type.
@@ -33,4 +34,8 @@ export async function getPlayerInfo(options: IPlayerInfoInput): Promise<IRespons
  */
 export async function getPlayerCurrentGameLog(options: IPlayerCurrentGameLogInput): Promise<IResponse<IPlayerCurrentGameLogOutput>> {
   return await sendGetRequest<IPlayerCurrentGameLogOutput>(BASE_URL.NORMAL, "player/{playerId}/game-log/now", options);
+}
+
+export async function getPlayerSpotlight(): Promise<IResponse<IPlayerSpotlightOutput>> {
+  return await sendGetRequestWithoutParams<IPlayerSpotlightOutput>(BASE_URL.NORMAL, "player-spotlight");
 }

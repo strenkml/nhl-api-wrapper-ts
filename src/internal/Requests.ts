@@ -43,6 +43,25 @@ export async function sendGetRequest<T>(baseUrl: BASE_URL, endpoint: string, par
   }
 }
 
+export async function sendGetRequestWithoutParams<T>(baseUrl: BASE_URL, endpoint: string): Promise<IResponse<T>> {
+  try {
+    const url = getUrlWithoutParams(baseUrl, endpoint);
+    const response: AxiosResponse<T> = await axios.get(url);
+
+    return {
+      status: response.status,
+      data: response.data,
+    };
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (error: any) {
+    if (axios.isAxiosError(error)) {
+      throw new Error(`Axios error: ${error.response?.status || "Unknown status"}`);
+    } else {
+      throw new Error(`Unexpected error: ${error.message}`);
+    }
+  }
+}
+
 function getUrl(baseUrl: BASE_URL, endpoint: string, params: IParams): IEndpointInfo {
   const leftOverParams: Map<string, string> = new Map();
 
@@ -68,4 +87,8 @@ function getUrl(baseUrl: BASE_URL, endpoint: string, params: IParams): IEndpoint
   };
 
   return info;
+}
+
+function getUrlWithoutParams(baseUrl: BASE_URL, endpoint: string): string {
+  return `${baseUrl}${endpoint}`;
 }

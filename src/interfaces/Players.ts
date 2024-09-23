@@ -71,7 +71,7 @@ export interface IPlayerInfoInput {
 
 export interface IPlayerInfoOutput {
   playerId: number;
-  isActiive: boolean;
+  isActive: boolean;
   currentTeamId: number;
   currentTeamAbbrev: string;
   fullTeamName: ICommonName;
@@ -248,7 +248,7 @@ export interface ICurrentSkaterStatsLeadersInput {
   /**
    * The categories of stats.
    */
-  categories?: STAT_CATEGORY[];
+  categories?: SKATER_STAT_CATEGORY[];
 
   /**
    * The number of rows to return. A limit of -1 will return all stats
@@ -256,7 +256,7 @@ export interface ICurrentSkaterStatsLeadersInput {
   limit?: number;
 }
 
-export enum STAT_CATEGORY {
+export enum SKATER_STAT_CATEGORY {
   SHORT_HANDED_GOALS = "goalsSh",
   PLUS_MINUS = "plusMinus",
   ASSISTS = "assists",
@@ -269,18 +269,18 @@ export enum STAT_CATEGORY {
 }
 
 export interface ICurrentSkaterStatsLeadersOutput {
-  goalsSh?: ISkaterStats[];
-  plusMinus?: ISkaterStats[];
-  assists?: ISkaterStats[];
-  goalsPp?: ISkaterStats[];
-  faceoffLeaders?: ISkaterStats[];
-  penaltyMins?: ISkaterStats[];
-  goals?: ISkaterStats[];
-  points?: ISkaterStats[];
-  toi?: ISkaterStats[];
+  goalsSh?: ILeaderStats[];
+  plusMinus?: ILeaderStats[];
+  assists?: ILeaderStats[];
+  goalsPp?: ILeaderStats[];
+  faceoffLeaders?: ILeaderStats[];
+  penaltyMins?: ILeaderStats[];
+  goals?: ILeaderStats[];
+  points?: ILeaderStats[];
+  toi?: ILeaderStats[];
 }
 
-export interface ISkaterStats {
+export interface ILeaderStats {
   id: number;
   firstName: ICommonName;
   lastName: ICommonName;
@@ -307,7 +307,7 @@ export interface ISkaterStatsLeadersSeasonInput {
   /**
    * The categories of stats.
    */
-  categories?: STAT_CATEGORY[];
+  categories?: SKATER_STAT_CATEGORY[];
 
   /**
    * The number of rows to return. A limit of -1 will return all stats
@@ -316,13 +316,83 @@ export interface ISkaterStatsLeadersSeasonInput {
 }
 
 export interface ISkaterStatsLeadersSeasonOutput {
-  goalsSh?: ISkaterStats[];
-  plusMinus?: ISkaterStats[];
-  assists?: ISkaterStats[];
-  goalsPp?: ISkaterStats[];
-  faceoffLeaders?: ISkaterStats[];
-  penaltyMins?: ISkaterStats[];
-  goals?: ISkaterStats[];
-  points?: ISkaterStats[];
-  toi?: ISkaterStats[];
+  goalsSh?: ILeaderStats[];
+  plusMinus?: ILeaderStats[];
+  assists?: ILeaderStats[];
+  goalsPp?: ILeaderStats[];
+  faceoffLeaders?: ILeaderStats[];
+  penaltyMins?: ILeaderStats[];
+  goals?: ILeaderStats[];
+  points?: ILeaderStats[];
+  toi?: ILeaderStats[];
+}
+
+export interface ICurrentGoalieStatsLeadersInput {
+  /**
+   * The categories of stats.
+   */
+  categories?: GOALIE_STAT_CATEGORY[];
+
+  /**
+   * The number of rows to return. A limit of -1 will return all stats
+   */
+  limit?: number;
+}
+
+export enum GOALIE_STAT_CATEGORY {
+  WINS = "wins",
+  SHUTOUTS = "shutouts",
+  SAVE_PERCENTAGE = "savePctg",
+  GOALS_AGAINST_AVG = "goalsAgainstAverage",
+}
+
+export interface ICurrentGoalieStatsLeadersOutput {
+  wins?: ILeaderStats[];
+  shutouts?: ILeaderStats[];
+  savePctg?: ILeaderStats[];
+  goalsAgainstAverage?: ILeaderStats[];
+}
+
+export interface IGoalieStatsLeadersSeasonInput {
+  /**
+   * Season in YYYYYYYY format, where the first four digits represent the start year of the season, and the last four digits represent the end year.
+   */
+  season: number;
+
+  /**
+   * Game type
+   */
+  gameTypeId: GAME_TYPE;
+
+  /**
+   * The categories of stats.
+   */
+  categories?: GOALIE_STAT_CATEGORY[];
+
+  /**
+   * The number of rows to return. A limit of -1 will return all stats
+   */
+  limit?: number;
+}
+
+export interface IGoalieStatsLeadersSeasonOutput {
+  wins?: ILeaderStats[];
+  shutouts?: ILeaderStats[];
+  savePctg?: ILeaderStats[];
+  goalsAgainstAverage?: ILeaderStats[];
+}
+
+export type IPlayerSpotlightOutput = ISpotlightPlayer[];
+
+export interface ISpotlightPlayer {
+  playerId: number;
+  name: ICommonName;
+  playerSlug: string;
+  position: string;
+  sweaterNumber: number;
+  teamId: number;
+  headshot: string;
+  teamTriCode: string;
+  teamLogo: string;
+  sortId: number;
 }
