@@ -274,7 +274,7 @@ export interface ITeam {
 }
 
 export interface IPeriodDescriptor {
-  number: number;
+  number?: number;
   periodType: string;
   maxRegulationPeriods: number;
 }
@@ -298,7 +298,7 @@ export interface IPlayer {
   headshot: string;
   firstName: ICommonName;
   lastName: ICommonName;
-  sweaterNumber: number;
+  sweaterNumber?: number;
   positionCode: string;
   shootsCatches: string;
   heightInInches: number;
@@ -310,3 +310,229 @@ export interface IPlayer {
   birthCountry: string;
   birthStateProvince?: ICommonName;
 }
+
+export interface ITeamRosterSeasonInput {
+  /**
+   * The team to retrieve the roster for.
+   * Three-letter team code
+   */
+  team: string;
+
+  /**
+   * Season in YYYYYYYY format, where the first four digits represent the start year of the season, and the last four digits represent the end year.
+   */
+  season: number;
+}
+
+export interface ITeamRosterSeasonOutput extends ICurrentTeamRosterOutput {}
+
+export interface ITeamSeasonsInput {
+  /**
+   * The team to retrieve the seasons for.
+   * Three-letter team code
+   */
+  team: string;
+}
+
+export type ITeamSeasonsOutput = number[];
+
+export interface ITeamProspectsInput {
+  /**
+   * The team to retrieve the prospects for.
+   * Three-letter team code
+   */
+  team: string;
+}
+
+export interface ITeamProspectsOutput {
+  forwards: IPlayer[];
+  defensemen: IPlayer[];
+  goalies: IPlayer[];
+}
+
+export interface ICurrentTeamScheduleInput {
+  /**
+   * The team to retrieve the schedule for.
+   * Three-letter team code
+   */
+  team: string;
+}
+
+export interface ICurrentTeamScheduleOutput {
+  previousSeason: number;
+  currentSeason: number;
+  clubTimezone: string;
+  clubUTCOffset: string;
+  games: IScheduleGame[];
+}
+
+export interface IScheduleGame {
+  id: number;
+  season: number;
+  gameType: GAME_TYPE;
+  gameDate: string;
+  venue: ICommonName;
+  neutralSite: boolean;
+  startTimeUTC: string;
+  easternUTCOffset: string;
+  venueUTCOffset: string;
+  venueTimezone: string;
+  gameState: string;
+  gameScheduleState: string;
+  tvBroadcasts: ITvBroadcast[];
+  awayTeam: ITeamDetails;
+  homeTeam: ITeamDetails;
+  periodDescriptor: IPeriodDescriptor;
+  gameOutcome: IGameOutcome;
+  winningGoalie: IPlayerShortInfo;
+  winningGoalScorer: IPlayerShortInfo;
+  gameCenterLink: string;
+}
+
+export interface ITeamDetails {
+  id: number;
+  placeName: ICommonName;
+  placeNameWithPreposition: ICommonName;
+  abbrev: string;
+  logo: string;
+  darkLogo: string;
+  score?: number;
+  awaySplitSquad?: boolean;
+  homeSplitSquad?: boolean;
+  radioLink?: string;
+}
+
+export interface IGameOutcome {
+  lastPeriodType: string;
+}
+
+export interface IPlayerShortInfo {
+  playerId: number;
+  firstInitial: ICommonName;
+  lastName: ICommonName;
+}
+
+export interface ITeamScheduleSeasonInput {
+  /**
+   * The team to retrieve the schedule for.
+   * Three-letter team code
+   */
+  team: string;
+
+  /**
+   * Season in YYYYYYYY format, where the first four digits represent the start year of the season, and the last four digits represent the end year.
+   */
+  season: number;
+}
+
+export interface ITeamScheduleSeasonOutput extends ICurrentTeamScheduleOutput {}
+
+export interface ICurrentTeamScheduleMonthInput {
+  /**
+   * The team to retrieve the schedule for.
+   * Three-letter team code
+   */
+  team: string;
+}
+
+export interface ICurrentTeamScheduleMonthOutput {
+  previousMonth: string;
+  currentMonth: string;
+  nextMonth: string;
+  calendarUrl: string;
+  clubTimezone: string;
+  clubUTCOffset: string;
+  games: IGameWithState[];
+}
+
+export interface IGameWithState {
+  id: number;
+  season: number;
+  gameType: GAME_TYPE;
+  gameDate: string;
+  venue: ICommonName;
+  neutralSite: boolean;
+  startTimeUTC: string;
+  easternUTCOffset: string;
+  venueUTCOffset: string;
+  venueTimezone: string;
+  gameState: string;
+  gameScheduleState: string;
+  tvBroadcasts: ITvBroadcast[];
+  awayTeam: ITeamDetails;
+  homeTeam: ITeamDetails;
+  periodDescriptor: IPeriodDescriptor;
+  gameOutcome?: IGameOutcome;
+  ticketsLink?: string;
+  ticketsLinkFr?: string;
+  gameCenterLink: string;
+}
+
+export interface ITeamScheduleMonthInput {
+  /**
+   * The team to retrieve the schedule for.
+   * Three-letter team code
+   */
+  team: string;
+
+  /**
+   * Month in YYYY-MM format.
+   */
+  month: string;
+}
+
+export interface ITeamScheduleMonthOutput extends ICurrentTeamScheduleMonthOutput {}
+
+export interface ICurrentTeamScheduleWeekInput {
+  /**
+   * The team to retrieve the schedule for.
+   * Three-letter team code
+   */
+  team: string;
+}
+
+export interface ICurrentTeamScheduleWeekOutput {
+  previousStartDate: string;
+  nextStartDate: string;
+  calendarUrl: string;
+  clubTimezone: string;
+  clubUTCOffset: string;
+  games: IScheduleGameWeek[];
+}
+
+export interface IScheduleGameWeek {
+  id: number;
+  season: number;
+  gameType: GAME_TYPE;
+  gameDate: string;
+  venue: ICommonName;
+  neutralSite: boolean;
+  startTimeUTC: string;
+  easternUTCOffset: string;
+  venueUTCOffset: string;
+  venueTimezone: string;
+  gameState: string;
+  gameScheduleState: string;
+  tvBroadcasts: ITvBroadcast[];
+  awayTeam: ITeamDetails;
+  homeTeam: ITeamDetails;
+  periodDescriptor: IPeriodDescriptor;
+  ticketsLink?: string;
+  ticketsLinkFr?: string;
+  gameCenterLink: string;
+}
+
+export interface ITeamScheduleWeekInput {
+  /**
+   * The team to retrieve the schedule for.
+   * Three-letter team code
+   */
+  team: string;
+
+  /**
+   * Date in YYYY-MM-DD format
+   */
+  date: string;
+}
+
+export interface ITeamScheduleWeekOutput extends ICurrentTeamScheduleWeekOutput {}

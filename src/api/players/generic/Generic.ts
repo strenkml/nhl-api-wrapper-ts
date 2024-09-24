@@ -36,6 +36,10 @@ export async function getPlayerCurrentGameLog(options: IPlayerCurrentGameLogInpu
   return await sendGetRequest<IPlayerCurrentGameLogOutput>(BASE_URL.NORMAL, "player/{playerId}/game-log/now", options);
 }
 
+/**
+ * Retrieve the player spotlight.
+ * @returns The player spotlight.
+ */
 export async function getPlayerSpotlight(): Promise<IResponse<IPlayerSpotlightOutput>> {
   return await sendGetRequestWithoutParams<IPlayerSpotlightOutput>(BASE_URL.NORMAL, "player-spotlight");
 }
