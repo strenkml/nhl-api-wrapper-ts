@@ -219,7 +219,7 @@ export interface IPlaybyPlayOutput {
   summary: IGameSummary;
 }
 
-interface ITeam {
+export interface ITeam {
   id: number;
   name: ICommonName;
   abbrev: string;
@@ -230,7 +230,7 @@ interface ITeam {
   placeNameWithPreposition: ICommonName;
 }
 
-interface IPlay {
+export interface IPlay {
   eventId: number;
   periodDescriptor: IPeriodDescriptor;
   timeInPeriod: string;
@@ -242,7 +242,7 @@ interface IPlay {
   sortOrder: number;
 }
 
-interface IRosterSpot {
+export interface IRosterSpot {
   teamId: number;
   playerId: number;
   firstName: ICommonName;
@@ -252,18 +252,18 @@ interface IRosterSpot {
   headshot: string;
 }
 
-interface IGameVideo {
+export interface IGameVideo {
   threeMinRecap: number;
   condensedGame: number;
 }
 
-interface ISummaryCategory {
+export interface ISummaryCategory {
   category: string;
   awayValue: number | string;
   homeValue: number | string;
 }
 
-interface ISeasonSeries {
+export interface ISeasonSeries {
   id: number;
   season: number;
   gameType: number;
@@ -281,30 +281,30 @@ interface ISeasonSeries {
   gameOutcome: IGameOutcome;
 }
 
-interface ISeasonSeriesTeam {
+export interface ISeasonSeriesTeam {
   id: number;
   abbrev: string;
   logo: string;
   score: number;
 }
 
-interface ILineScore {
+export interface ILineScore {
   byPeriod: IByPeriod[];
   totals: IScoreTotal;
 }
 
-interface IByPeriod {
+export interface IByPeriod {
   periodDescriptor: IPeriodDescriptor;
   away: number;
   home: number;
 }
 
-interface IScoreTotal {
+export interface IScoreTotal {
   away: number;
   home: number;
 }
 
-interface IGameReports {
+export interface IGameReports {
   gameSummary: string;
   eventSummary: string;
   playByPlay: string;
@@ -317,25 +317,25 @@ interface IGameReports {
   toiHome: string;
 }
 
-interface IGameInfo {
+export interface IGameInfo {
   referees: ICommonName[];
   linesmen: ICommonName[];
   awayTeam: ICoachAndScratches;
   homeTeam: ICoachAndScratches;
 }
 
-interface ICoachAndScratches {
+export interface ICoachAndScratches {
   headCoach: ICommonName;
   scratches: IScratch[];
 }
 
-interface IScratch {
+export interface IScratch {
   id: number;
   firstName: ICommonName;
   lastName: ICommonName;
 }
 
-interface IGameSummary {
+export interface IGameSummary {
   teamGameStats: ISummaryCategory[];
   seasonSeries: ISeasonSeries[];
   seasonSeriesWins: ISeasonSeriesWins;
@@ -345,13 +345,216 @@ interface IGameSummary {
   gameInfo: IGameInfo;
 }
 
-interface ISeasonSeriesWins {
+export interface ISeasonSeriesWins {
   awayTeamWins: number;
   homeTeamWins: number;
 }
 
-interface IShotsByPeriod {
+export interface IShotsByPeriod {
   periodDescriptor: IPeriodDescriptor;
   away: number;
   home: number;
 }
+
+export interface IGameLandingPageInput {
+  /**
+   * Game ID
+   */
+  gameId: number;
+}
+
+export interface IGameLandingPageOutput {
+  id: number;
+  season: number;
+  gameType: number;
+  limitedScoring: boolean;
+  gameDate: string;
+  venue: ICommonName;
+  venueLocation: ICommonName;
+  startTimeUTC: string;
+  easternUTCOffset: string;
+  venueUTCOffset: string;
+  venueTimezone: string;
+  periodDescriptor: IPeriodDescriptor;
+  tvBroadcasts: ITvBroadcast[];
+  gameState: string;
+  gameScheduleState: string;
+  awayTeam: ITeam;
+  homeTeam: ITeam;
+  shootoutInUse: boolean;
+  maxPeriods: number;
+  regPeriods: number;
+  otInUse: boolean;
+  tiesInUse: boolean;
+  summary: ISummary;
+  clock: IClock;
+}
+
+export interface ISummary {
+  scoring: IScoringPeriod[];
+  shootout: IShootout[];
+  threeStars: IThreeStar[];
+  penalties: IPeriodPenalties[];
+}
+
+export interface IScoringPeriod {
+  periodDescriptor: IPeriodDescriptor;
+  goals: ILandingGoal[];
+}
+
+export interface ILandingGoal {
+  situationCode: string;
+  strength: string;
+  playerId: number;
+  firstName: ICommonName;
+  lastName: ICommonName;
+  name: ICommonName;
+  teamAbbrev: ICommonName;
+  headshot: string;
+  highlightClipSharingUrl: string;
+  highlightClip: number;
+  goalsToDate: number;
+  awayScore: number;
+  homeScore: number;
+  leadingTeamAbbrev: ICommonName;
+  timeInPeriod: string;
+  shotType: string;
+  goalModifier: string;
+  assists: IAssist[];
+  pptReplayUrl: string;
+}
+
+export interface IShootout {
+  sequence: number;
+  playerId: number;
+  teamAbbrev: string;
+  firstName: string;
+  lastName: string;
+  shotType: string;
+  result: string;
+  headshot: string;
+  gameWinner: boolean;
+}
+
+export interface IThreeStar {
+  star: number;
+  playerId: number;
+  teamAbbrev: string;
+  headshot: string;
+  name: ICommonName;
+  sweaterNo: number;
+  position: string;
+  goals?: number;
+  assists?: number;
+  points?: number;
+  goalsAgainstAverage?: number;
+  savePctg?: number;
+}
+
+export interface IPeriodPenalties {
+  periodDescriptor: IPeriodDescriptor;
+  penalties: IPenalty[];
+}
+
+export interface IPenalty {
+  timeInPeriod: string;
+  type: string;
+  duration: number;
+  committedByPlayer: string;
+  teamAbbrev: ICommonName;
+  drawnBy: string;
+  descKey: string;
+}
+
+export interface IGameBoxScoreInput {
+  /**
+   * Game ID
+   */
+  gameId: number;
+}
+
+export interface IGameBoxScoreOutput {
+  id: number;
+  season: number;
+  gameType: number;
+  limitedScoring: boolean;
+  gameDate: string;
+  venue: ICommonName;
+  venueLocation: ICommonName;
+  startTimeUTC: string;
+  easternUTCOffset: string;
+  venueUTCOffset: string;
+  tvBroadcasts: ITvBroadcast[];
+  gameState: string;
+  gameScheduleState: string;
+  periodDescriptor: IPeriodDescriptor;
+  regPeriods: number;
+  awayTeam: ITeam;
+  homeTeam: ITeam;
+  clock: IClock;
+  playerByGameStats: IPlayerByGameStats;
+  gameOutcome: IGameOutcome;
+}
+
+export interface IPlayerByGameStats {
+  awayTeam: ITeamPlayerStats;
+  homeTeam: ITeamPlayerStats;
+}
+
+export interface ITeamPlayerStats {
+  forwards: IPlayerStats[];
+  defense: IPlayerStats[];
+  goalies: IGoalieStats[];
+}
+
+export interface IPlayerStats {
+  playerId: number;
+  sweaterNumber: number;
+  name: ICommonName;
+  position: string;
+  goals: number;
+  assists: number;
+  points: number;
+  plusMinus: number;
+  pim: number;
+  hits: number;
+  powerPlayGoals: number;
+  sog: number;
+  faceoffWinningPctg: number;
+  toi: string;
+  blockedShots: number;
+  shifts: number;
+  giveaways: number;
+  takeaways: number;
+}
+
+export interface IGoalieStats {
+  playerId: number;
+  sweaterNumber: number;
+  name: ICommonName;
+  position: string;
+  evenStrengthShotsAgainst: string;
+  powerPlayShotsAgainst: string;
+  shorthandedShotsAgainst: string;
+  saveShotsAgainst: string;
+  evenStrengthGoalsAgainst: number;
+  powerPlayGoalsAgainst: number;
+  shorthandedGoalsAgainst: number;
+  pim: number;
+  goalsAgainst: number;
+  toi: string;
+  starter: boolean;
+  shotsAgainst: number;
+  saves: number;
+  decision: string;
+  savePctg?: number;
+}
+
+export interface IGameStoryInput {
+  /**
+   * Game ID
+   */
+  gameId: number;
+}
+
+export interface IGameStoryOutput {}
