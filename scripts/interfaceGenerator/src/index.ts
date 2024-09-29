@@ -120,18 +120,14 @@ async function main() {
 
   // 6. /v1/goalie-stats-leaders/current
   try {
-    const getGoalieStatsLeadersCurrent1 = "https://api-web.nhle.com/v1/goalie-stats-leaders/current?categories=wins&limit=5";
-    const getGoalieStatsLeadersCurrent2 = "https://api-web.nhle.com/v1/goalie-stats-leaders/current?categories=gaa&limit=3";
-    const getGoalieStatsLeadersCurrent3 = "https://api-web.nhle.com/v1/goalie-stats-leaders/current?categories=save-percentage&limit=7";
+    const getGoalieStatsLeadersCurrent = "https://api-web.nhle.com/v1/goalie-stats-leaders/current";
 
-    const goalieStatsLeadersCurrentData1 = await getRequest(getGoalieStatsLeadersCurrent1);
-    const goalieStatsLeadersCurrentData2 = await getRequest(getGoalieStatsLeadersCurrent2);
-    const goalieStatsLeadersCurrentData3 = await getRequest(getGoalieStatsLeadersCurrent3);
+    const goalieStatsLeadersCurrentData = await getRequest(getGoalieStatsLeadersCurrent);
 
     const genGoalieStatsLeadersCurrent = new Gen("IGoalieStatsLeadersCurrentOutput", "./output/interfaces/stats/goalie/leaders", {
       backupOldFile: false,
       fileName: "GoalieStatsLeadersCurrent",
-      jsonVariations: [goalieStatsLeadersCurrentData1, goalieStatsLeadersCurrentData2, goalieStatsLeadersCurrentData3],
+      jsonVariations: [goalieStatsLeadersCurrentData],
     });
     genGoalieStatsLeadersCurrent.generateInterfaces();
   } catch (error) {
@@ -140,9 +136,9 @@ async function main() {
 
   // 7. /v1/goalie-stats-leaders/{season}/{game-type}
   try {
-    const getGoalieStatsLeaders1 = "https://api-web.nhle.com/v1/goalie-stats-leaders/20232024/2?categories=wins&limit=5";
-    const getGoalieStatsLeaders2 = "https://api-web.nhle.com/v1/goalie-stats-leaders/20222023/3?categories=gaa&limit=7";
-    const getGoalieStatsLeaders3 = "https://api-web.nhle.com/v1/goalie-stats-leaders/20212022/2?categories=save-percentage&limit=10";
+    const getGoalieStatsLeaders1 = "https://api-web.nhle.com/v1/goalie-stats-leaders/20232024/2";
+    const getGoalieStatsLeaders2 = "https://api-web.nhle.com/v1/goalie-stats-leaders/20222023/3";
+    const getGoalieStatsLeaders3 = "https://api-web.nhle.com/v1/goalie-stats-leaders/20212022/2";
 
     const goalieStatsLeadersData1 = await getRequest(getGoalieStatsLeaders1);
     const goalieStatsLeadersData2 = await getRequest(getGoalieStatsLeaders2);
@@ -671,15 +667,17 @@ async function main() {
     const getGameLanding1 = "https://api-web.nhle.com/v1/gamecenter/2023020204/landing";
     const getGameLanding2 = "https://api-web.nhle.com/v1/gamecenter/2023020205/landing";
     const getGameLanding3 = "https://api-web.nhle.com/v1/gamecenter/2023020206/landing";
+    const getGameLanding4 = "https://api-web.nhle.com/v1/gamecenter/2023021305/landing";
 
     const gameLandingData1 = await getRequest(getGameLanding1);
     const gameLandingData2 = await getRequest(getGameLanding2);
     const gameLandingData3 = await getRequest(getGameLanding3);
+    const gameLandingData4 = await getRequest(getGameLanding4);
 
     const genGameLanding = new Gen("IGameLandingOutput", "./output/interfaces/gamecenter/landing", {
       backupOldFile: false,
       fileName: "GameLanding",
-      jsonVariations: [gameLandingData1, gameLandingData2, gameLandingData3],
+      jsonVariations: [gameLandingData1, gameLandingData2, gameLandingData3, gameLandingData4],
     });
     genGameLanding.generateInterfaces();
   } catch (error) {
@@ -711,15 +709,17 @@ async function main() {
     const getGameStory1 = "https://api-web.nhle.com/v1/wsc/game-story/2023020204";
     const getGameStory2 = "https://api-web.nhle.com/v1/wsc/game-story/2023020205";
     const getGameStory3 = "https://api-web.nhle.com/v1/wsc/game-story/2023020206";
+    const getGameStory4 = "https://api-web.nhle.com/v1/wsc/game-story/2023021305";
 
     const gameStoryData1 = await getRequest(getGameStory1);
     const gameStoryData2 = await getRequest(getGameStory2);
     const gameStoryData3 = await getRequest(getGameStory3);
+    const gameStoryData4 = await getRequest(getGameStory4);
 
     const genGameStory = new Gen("IGameStoryOutput", "./output/interfaces/wsc/game-story", {
       backupOldFile: false,
       fileName: "GameStory",
-      jsonVariations: [gameStoryData1, gameStoryData2, gameStoryData3],
+      jsonVariations: [gameStoryData1, gameStoryData2, gameStoryData3, gameStoryData4],
     });
     genGameStory.generateInterfaces();
   } catch (error) {
@@ -896,14 +896,18 @@ async function main() {
 
   // 47. /v1/meta
   try {
-    const getMetaInfo = "https://api-web.nhle.com/v1/meta";
+    const getMetaInfo1 = "https://api-web.nhle.com/v1/meta?players=8478402&teams=EDM,TOR";
+    const getMetaInfo2 = "https://api-web.nhle.com/v1/meta?players=8478403&teams=MTL,BOS";
+    const getMetaInfo3 = "https://api-web.nhle.com/v1/meta?players=8478404&teams=NYR,CHI";
 
-    const metaInfoData = await getRequest(getMetaInfo);
+    const metaInfoData1 = await getRequest(getMetaInfo1);
+    const metaInfoData2 = await getRequest(getMetaInfo2);
+    const metaInfoData3 = await getRequest(getMetaInfo3);
 
     const genMetaInfo = new Gen("IMetaInfoOutput", "./output/interfaces/meta", {
       backupOldFile: false,
       fileName: "MetaInfo",
-      jsonVariations: [metaInfoData],
+      jsonVariations: [metaInfoData1, metaInfoData2, metaInfoData3],
     });
     genMetaInfo.generateInterfaces();
   } catch (error) {
@@ -947,20 +951,21 @@ async function main() {
   }
 
   // 50. /model/v1/openapi.json
-  try {
-    const getOpenApiSpec = "https://api-web.nhle.com/model/v1/openapi.json";
+  // Returns a 404 error
+  // try {
+  //   const getOpenApiSpec = "https://api-web.nhle.com/model/v1/openapi.json";
 
-    const openApiSpecData = await getRequest(getOpenApiSpec);
+  //   const openApiSpecData = await getRequest(getOpenApiSpec);
 
-    const genOpenApiSpec = new Gen("IOpenApiSpecOutput", "./output/interfaces/model/openapi", {
-      backupOldFile: false,
-      fileName: "OpenApiSpec",
-      jsonVariations: [openApiSpecData],
-    });
-    genOpenApiSpec.generateInterfaces();
-  } catch (error) {
-    console.error("Error fetching OpenAPI specification:", error);
-  }
+  //   const genOpenApiSpec = new Gen("IOpenApiSpecOutput", "./output/interfaces/model/openapi", {
+  //     backupOldFile: false,
+  //     fileName: "OpenApiSpec",
+  //     jsonVariations: [openApiSpecData],
+  //   });
+  //   genOpenApiSpec.generateInterfaces();
+  // } catch (error) {
+  //   console.error("Error fetching OpenAPI specification:", error);
+  // }
 
   // 51. /{lang}/players
   try {
@@ -1023,30 +1028,31 @@ async function main() {
   }
 
   // 54. /{lang}/skater
-  try {
-    const getSkaterInfo1 = "https://api.nhle.com/stats/rest/en/skater";
-    const getSkaterInfo2 = "https://api.nhle.com/stats/rest/fr/skater";
-    const getSkaterInfo3 = "https://api.nhle.com/stats/rest/es/skater";
+  // Returns a 404 error
+  // try {
+  //   const getSkaterInfo1 = "https://api.nhle.com/stats/rest/en/skater";
+  //   const getSkaterInfo2 = "https://api.nhle.com/stats/rest/fr/skater";
+  //   const getSkaterInfo3 = "https://api.nhle.com/stats/rest/es/skater";
 
-    const skaterInfoData1 = await getRequest(getSkaterInfo1);
-    const skaterInfoData2 = await getRequest(getSkaterInfo2);
-    const skaterInfoData3 = await getRequest(getSkaterInfo3);
+  //   const skaterInfoData1 = await getRequest(getSkaterInfo1);
+  //   const skaterInfoData2 = await getRequest(getSkaterInfo2);
+  //   const skaterInfoData3 = await getRequest(getSkaterInfo3);
 
-    const genSkaterInfo = new Gen("ISkaterInfoOutput", "./output/interfaces/stats/skater", {
-      backupOldFile: false,
-      fileName: "SkaterInfo",
-      jsonVariations: [skaterInfoData1, skaterInfoData2, skaterInfoData3],
-    });
-    genSkaterInfo.generateInterfaces();
-  } catch (error) {
-    console.error("Error fetching skater info:", error);
-  }
+  //   const genSkaterInfo = new Gen("ISkaterInfoOutput", "./output/interfaces/stats/skater", {
+  //     backupOldFile: false,
+  //     fileName: "SkaterInfo",
+  //     jsonVariations: [skaterInfoData1, skaterInfoData2, skaterInfoData3],
+  //   });
+  //   genSkaterInfo.generateInterfaces();
+  // } catch (error) {
+  //   console.error("Error fetching skater info:", error);
+  // }
 
   // 55. /{lang}/skater/{report}
   try {
-    const getSkaterStats1 = "https://api.nhle.com/stats/rest/en/skater/summary?limit=72&start=17&sort=points&cayenneExp=seasonId=20232024";
-    const getSkaterStats2 = "https://api.nhle.com/stats/rest/fr/skater/summary?limit=100&start=10&sort=goals&cayenneExp=seasonId=20222023";
-    const getSkaterStats3 = "https://api.nhle.com/stats/rest/es/skater/summary?limit=50&start=5&sort=assists&cayenneExp=seasonId=20212022";
+    const getSkaterStats1 = "https://api.nhle.com/stats/rest/en/skater/summary?limit=72&start=17&cayenneExp=seasonId=20232024";
+    const getSkaterStats2 = "https://api.nhle.com/stats/rest/fr/skater/summary?limit=100&start=10&cayenneExp=seasonId=20222023";
+    const getSkaterStats3 = "https://api.nhle.com/stats/rest/es/skater/summary?limit=50&start=5&cayenneExp=seasonId=20212022";
 
     const skaterStatsData1 = await getRequest(getSkaterStats1);
     const skaterStatsData2 = await getRequest(getSkaterStats2);
@@ -1064,18 +1070,14 @@ async function main() {
 
   // 56. /{lang}/leaders/goalies/{attribute}
   try {
-    const getGoalieLeaders1 = "https://api.nhle.com/stats/rest/en/leaders/goalies/wins";
-    const getGoalieLeaders2 = "https://api.nhle.com/stats/rest/fr/leaders/goalies/gaa";
-    const getGoalieLeaders3 = "https://api.nhle.com/stats/rest/es/leaders/goalies/save-percentage";
+    const getGoalieLeaders = "https://api.nhle.com/stats/rest/fr/leaders/goalies/gaa";
 
-    const goalieLeadersData1 = await getRequest(getGoalieLeaders1);
-    const goalieLeadersData2 = await getRequest(getGoalieLeaders2);
-    const goalieLeadersData3 = await getRequest(getGoalieLeaders3);
+    const goalieLeadersData = await getRequest(getGoalieLeaders);
 
     const genGoalieLeaders = new Gen("IGoalieLeadersOutput", "./output/interfaces/stats/leaders/goalies", {
       backupOldFile: false,
       fileName: "GoalieLeaders",
-      jsonVariations: [goalieLeadersData1, goalieLeadersData2, goalieLeadersData3],
+      jsonVariations: [goalieLeadersData],
     });
     genGoalieLeaders.generateInterfaces();
   } catch (error) {
@@ -1084,9 +1086,9 @@ async function main() {
 
   // 57. /{lang}/goalie/{report}
   try {
-    const getGoalieStats1 = "https://api.nhle.com/stats/rest/en/goalie/summary?limit=72&start=15&sort=wins&cayenneExp=seasonId=20232024";
-    const getGoalieStats2 = "https://api.nhle.com/stats/rest/fr/goalie/summary?limit=50&start=10&sort=gaa&cayenneExp=seasonId=20222023";
-    const getGoalieStats3 = "https://api.nhle.com/stats/rest/es/goalie/summary?limit=100&start=5&sort=save-percentage&cayenneExp=seasonId=20212022";
+    const getGoalieStats1 = "https://api.nhle.com/stats/rest/en/goalie/summary?limit=72&start=15&cayenneExp=seasonId=20232024";
+    const getGoalieStats2 = "https://api.nhle.com/stats/rest/fr/goalie/summary?limit=50&start=10&cayenneExp=seasonId=20222023";
+    const getGoalieStats3 = "https://api.nhle.com/stats/rest/es/goalie/summary?limit=100&start=5&cayenneExp=seasonId=20212022";
 
     const goalieStatsData1 = await getRequest(getGoalieStats1);
     const goalieStatsData2 = await getRequest(getGoalieStats2);
@@ -1164,9 +1166,9 @@ async function main() {
 
   // 61. /{lang}/team/{report}
   try {
-    const getTeamStats1 = "https://api.nhle.com/stats/rest/en/team/summary?sort=shotsForPerGame&cayenneExp=seasonId=20232024%20and%20gameTypeId=2";
-    const getTeamStats2 = "https://api.nhle.com/stats/rest/fr/team/summary?sort=goalsFor&cayenneExp=seasonId=20222023%20and%20gameTypeId=2";
-    const getTeamStats3 = "https://api.nhle.com/stats/rest/es/team/summary?sort=assistsFor&cayenneExp=seasonId=20212022%20and%20gameTypeId=2";
+    const getTeamStats1 = "https://api.nhle.com/stats/rest/en/team/summary?cayenneExp=seasonId=20232024%20and%20gameTypeId=2";
+    const getTeamStats2 = "https://api.nhle.com/stats/rest/fr/team/summary?cayenneExp=seasonId=20222023%20and%20gameTypeId=2";
+    const getTeamStats3 = "https://api.nhle.com/stats/rest/es/team/summary?cayenneExp=seasonId=20212022%20and%20gameTypeId=2";
 
     const teamStatsData1 = await getRequest(getTeamStats1);
     const teamStatsData2 = await getRequest(getTeamStats2);
@@ -1263,24 +1265,25 @@ async function main() {
   }
 
   // 66. /{lang}/game/meta
-  try {
-    const getGameMeta1 = "https://api.nhle.com/stats/rest/en/game/meta";
-    const getGameMeta2 = "https://api.nhle.com/stats/rest/fr/game/meta";
-    const getGameMeta3 = "https://api.nhle.com/stats/rest/es/game/meta";
+  // Returns a 404 error
+  // try {
+  //   const getGameMeta1 = "https://api.nhle.com/stats/rest/en/game/meta";
+  //   const getGameMeta2 = "https://api.nhle.com/stats/rest/fr/game/meta";
+  //   const getGameMeta3 = "https://api.nhle.com/stats/rest/es/game/meta";
 
-    const gameMetaData1 = await getRequest(getGameMeta1);
-    const gameMetaData2 = await getRequest(getGameMeta2);
-    const gameMetaData3 = await getRequest(getGameMeta3);
+  //   const gameMetaData1 = await getRequest(getGameMeta1);
+  //   const gameMetaData2 = await getRequest(getGameMeta2);
+  //   const gameMetaData3 = await getRequest(getGameMeta3);
 
-    const genGameMeta = new Gen("IGameMetaOutput", "./output/interfaces/stats/game/meta", {
-      backupOldFile: false,
-      fileName: "GameMeta",
-      jsonVariations: [gameMetaData1, gameMetaData2, gameMetaData3],
-    });
-    genGameMeta.generateInterfaces();
-  } catch (error) {
-    console.error("Error fetching game meta data:", error);
-  }
+  //   const genGameMeta = new Gen("IGameMetaOutput", "./output/interfaces/stats/game/meta", {
+  //     backupOldFile: false,
+  //     fileName: "GameMeta",
+  //     jsonVariations: [gameMetaData1, gameMetaData2, gameMetaData3],
+  //   });
+  //   genGameMeta.generateInterfaces();
+  // } catch (error) {
+  //   console.error("Error fetching game meta data:", error);
+  // }
 
   // 67. /{lang}/config
   try {
@@ -1379,40 +1382,42 @@ async function main() {
   }
 
   // 72. /{lang}/content/module
-  try {
-    const getContentModule1 = "https://api.nhle.com/stats/rest/en/content/module";
-    const getContentModule2 = "https://api.nhle.com/stats/rest/fr/content/module";
-    const getContentModule3 = "https://api.nhle.com/stats/rest/es/content/module";
+  // Returns a 404 error
+  // try {
+  //   const getContentModule1 = "https://api.nhle.com/stats/rest/en/content/module";
+  //   const getContentModule2 = "https://api.nhle.com/stats/rest/fr/content/module";
+  //   const getContentModule3 = "https://api.nhle.com/stats/rest/es/content/module";
 
-    const contentModuleData1 = await getRequest(getContentModule1);
-    const contentModuleData2 = await getRequest(getContentModule2);
-    const contentModuleData3 = await getRequest(getContentModule3);
+  //   const contentModuleData1 = await getRequest(getContentModule1);
+  //   const contentModuleData2 = await getRequest(getContentModule2);
+  //   const contentModuleData3 = await getRequest(getContentModule3);
 
-    const genContentModule = new Gen("IContentModuleOutput", "./output/interfaces/stats/content/module", {
-      backupOldFile: false,
-      fileName: "ContentModule",
-      jsonVariations: [contentModuleData1, contentModuleData2, contentModuleData3],
-    });
-    genContentModule.generateInterfaces();
-  } catch (error) {
-    console.error("Error fetching content module data:", error);
-  }
+  //   const genContentModule = new Gen("IContentModuleOutput", "./output/interfaces/stats/content/module", {
+  //     backupOldFile: false,
+  //     fileName: "ContentModule",
+  //     jsonVariations: [contentModuleData1, contentModuleData2, contentModuleData3],
+  //   });
+  //   genContentModule.generateInterfaces();
+  // } catch (error) {
+  //   console.error("Error fetching content module data:", error);
+  // }
 
   // 73. /content/module/meta
-  try {
-    const getContentModuleMeta = "https://api.nhle.com/stats/rest/content/module/meta";
+  // Returns a 404 error
+  // try {
+  //   const getContentModuleMeta = "https://api.nhle.com/stats/rest/content/module/meta";
 
-    const contentModuleMetaData = await getRequest(getContentModuleMeta);
+  //   const contentModuleMetaData = await getRequest(getContentModuleMeta);
 
-    const genContentModuleMeta = new Gen("IContentModuleMetaOutput", "./output/interfaces/stats/content/module", {
-      backupOldFile: false,
-      fileName: "ContentModuleMeta",
-      jsonVariations: [contentModuleMetaData],
-    });
-    genContentModuleMeta.generateInterfaces();
-  } catch (error) {
-    console.error("Error fetching content module meta data:", error);
-  }
+  //   const genContentModuleMeta = new Gen("IContentModuleMetaOutput", "./output/interfaces/stats/content/module", {
+  //     backupOldFile: false,
+  //     fileName: "ContentModuleMeta",
+  //     jsonVariations: [contentModuleMetaData],
+  //   });
+  //   genContentModuleMeta.generateInterfaces();
+  // } catch (error) {
+  //   console.error("Error fetching content module meta data:", error);
+  // }
 }
 
 main();
