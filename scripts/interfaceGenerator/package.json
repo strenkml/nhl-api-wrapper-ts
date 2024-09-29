@@ -4,7 +4,7 @@
   "main": "dist/index.js",
   "scripts": {
     "start": "npx ts-node src/index.ts",
-    "start:console": "npm run start > console.out 2>&1"
+    "start:console": "npm run start > console.log 2>&1"
   },
   "author": "Matt Strenk",
   "license": "MIT",

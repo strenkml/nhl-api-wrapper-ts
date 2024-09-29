@@ -1,4 +1,4 @@
 node_modules
 dist
 output
-console.out
+console.log

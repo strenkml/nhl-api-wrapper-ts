@@ -15,866 +15,1403 @@ function getRequest(url: string): Promise<any> {
   });
 }
 
+// Was generated using ChatGPT
+// https://chatgpt.com/share/66f95df3-e01c-8006-ab85-565ea50f20ed
 async function main() {
+  // 1. /v1/player/{player}/game-log/{season}/{game-type}
   try {
-    // Get Game Log for a specific player, season, and game type
-    const playerGameLogUrl1 = "https://api-web.nhle.com/v1/player/8478402/game-log/20232024/2";
-    const playerGameLogData1 = await getRequest(playerGameLogUrl1);
+    const getPlayerGameLog1 = "https://api-web.nhle.com/v1/player/8478402/game-log/20232024/2";
+    const getPlayerGameLog2 = "https://api-web.nhle.com/v1/player/8474567/game-log/20222023/3";
+    const getPlayerGameLog3 = "https://api-web.nhle.com/v1/player/8471234/game-log/20212022/2";
 
-    const playerGameLogUrl2 = "https://api-web.nhle.com/v1/player/8478403/game-log/20222023/3";
-    const playerGameLogData2 = await getRequest(playerGameLogUrl2);
+    const playerGameLogData1 = await getRequest(getPlayerGameLog1);
+    const playerGameLogData2 = await getRequest(getPlayerGameLog2);
+    const playerGameLogData3 = await getRequest(getPlayerGameLog3);
 
-    const playerGameLogUrl3 = "https://api-web.nhle.com/v1/player/8478404/game-log/20212022/2";
-    const playerGameLogData3 = await getRequest(playerGameLogUrl3);
-
-    const iPlayerGameLogOutput = new Gen("IPlayerGameLogOutput", "./output/interfaces/player/game-log", {
+    const genPlayerGameLog = new Gen("IPlayerGameLogOutput", "./output/interfaces/player/game-log", {
       backupOldFile: false,
       fileName: "PlayerGameLog",
       jsonVariations: [playerGameLogData1, playerGameLogData2, playerGameLogData3],
     });
-    iPlayerGameLogOutput.generateInterfaces();
+    genPlayerGameLog.generateInterfaces();
   } catch (error) {
-    console.error("Error fetching player game logs:", error);
+    console.error("Error fetching player game log:", error);
   }
 
+  // 2. /v1/player/{player}/landing
   try {
-    // Get Specific Player Info
-    const specificPlayerInfoUrl = "https://api-web.nhle.com/v1/player/8478402/landing";
-    const specificPlayerInfoData = await getRequest(specificPlayerInfoUrl);
+    const getPlayerLanding1 = "https://api-web.nhle.com/v1/player/8478402/landing";
+    const getPlayerLanding2 = "https://api-web.nhle.com/v1/player/8474567/landing";
+    const getPlayerLanding3 = "https://api-web.nhle.com/v1/player/8471234/landing";
 
-    const iSpecificPlayerInfoOutput = new Gen("ISpecificPlayerInfoOutput", "./output/interfaces/player/info", {
+    const playerLandingData1 = await getRequest(getPlayerLanding1);
+    const playerLandingData2 = await getRequest(getPlayerLanding2);
+    const playerLandingData3 = await getRequest(getPlayerLanding3);
+
+    const genPlayerLanding = new Gen("IPlayerLandingOutput", "./output/interfaces/player/landing", {
       backupOldFile: false,
-      fileName: "SpecificPlayerInfo",
-      jsonVariations: [specificPlayerInfoData],
+      fileName: "PlayerLanding",
+      jsonVariations: [playerLandingData1, playerLandingData2, playerLandingData3],
     });
-    iSpecificPlayerInfoOutput.generateInterfaces();
+    genPlayerLanding.generateInterfaces();
   } catch (error) {
-    console.error("Error fetching specific player info:", error);
+    console.error("Error fetching player landing info:", error);
   }
 
+  // 3. /v1/player/{player}/game-log/now
   try {
-    // Get Game Log As of Now for a specific player
-    const playerGameLogNowUrl1 = "https://api-web.nhle.com/v1/player/8478402/game-log/now";
-    const playerGameLogNowData1 = await getRequest(playerGameLogNowUrl1);
+    const getPlayerGameLogNow1 = "https://api-web.nhle.com/v1/player/8478402/game-log/now";
+    const getPlayerGameLogNow2 = "https://api-web.nhle.com/v1/player/8474567/game-log/now";
+    const getPlayerGameLogNow3 = "https://api-web.nhle.com/v1/player/8471234/game-log/now";
 
-    const playerGameLogNowUrl2 = "https://api-web.nhle.com/v1/player/8478403/game-log/now";
-    const playerGameLogNowData2 = await getRequest(playerGameLogNowUrl2);
+    const playerGameLogNowData1 = await getRequest(getPlayerGameLogNow1);
+    const playerGameLogNowData2 = await getRequest(getPlayerGameLogNow2);
+    const playerGameLogNowData3 = await getRequest(getPlayerGameLogNow3);
 
-    const playerGameLogNowUrl3 = "https://api-web.nhle.com/v1/player/8478404/game-log/now";
-    const playerGameLogNowData3 = await getRequest(playerGameLogNowUrl3);
-
-    const iPlayerGameLogNowOutput = new Gen("IPlayerGameLogNowOutput", "./output/interfaces/player/game-log/now", {
+    const genPlayerGameLogNow = new Gen("IPlayerGameLogNowOutput", "./output/interfaces/player/game-log", {
       backupOldFile: false,
       fileName: "PlayerGameLogNow",
       jsonVariations: [playerGameLogNowData1, playerGameLogNowData2, playerGameLogNowData3],
     });
-    iPlayerGameLogNowOutput.generateInterfaces();
+    genPlayerGameLogNow.generateInterfaces();
   } catch (error) {
-    console.error("Error fetching player game log now:", error);
+    console.error("Error fetching player game log for now:", error);
   }
 
+  // 4. /v1/skater-stats-leaders/current
   try {
-    // Get Current Skater Stats Leaders
-    const currentSkaterStatsUrl1 = "https://api-web.nhle.com/v1/skater-stats-leaders/current?categories=goals&limit=5";
-    const currentSkaterStatsData1 = await getRequest(currentSkaterStatsUrl1);
+    const getSkaterStatsLeadersCurrent1 = "https://api-web.nhle.com/v1/skater-stats-leaders/current?categories=goals&limit=5";
+    const getSkaterStatsLeadersCurrent2 = "https://api-web.nhle.com/v1/skater-stats-leaders/current?categories=assists&limit=10";
+    const getSkaterStatsLeadersCurrent3 = "https://api-web.nhle.com/v1/skater-stats-leaders/current?categories=points&limit=3";
 
-    const currentSkaterStatsUrl2 = "https://api-web.nhle.com/v1/skater-stats-leaders/current?categories=assists&limit=3";
-    const currentSkaterStatsData2 = await getRequest(currentSkaterStatsUrl2);
+    const skaterStatsLeadersCurrentData1 = await getRequest(getSkaterStatsLeadersCurrent1);
+    const skaterStatsLeadersCurrentData2 = await getRequest(getSkaterStatsLeadersCurrent2);
+    const skaterStatsLeadersCurrentData3 = await getRequest(getSkaterStatsLeadersCurrent3);
 
-    const currentSkaterStatsUrl3 = "https://api-web.nhle.com/v1/skater-stats-leaders/current?categories=points&limit=-1";
-    const currentSkaterStatsData3 = await getRequest(currentSkaterStatsUrl3);
-
-    const iCurrentSkaterStatsLeadersOutput = new Gen("ICurrentSkaterStatsLeadersOutput", "./output/interfaces/skater/stats/leaders", {
+    const genSkaterStatsLeadersCurrent = new Gen("ISkaterStatsLeadersCurrentOutput", "./output/interfaces/stats/skater/leaders", {
       backupOldFile: false,
-      fileName: "CurrentSkaterStatsLeaders",
-      jsonVariations: [currentSkaterStatsData1, currentSkaterStatsData2, currentSkaterStatsData3],
+      fileName: "SkaterStatsLeadersCurrent",
+      jsonVariations: [skaterStatsLeadersCurrentData1, skaterStatsLeadersCurrentData2, skaterStatsLeadersCurrentData3],
     });
-    iCurrentSkaterStatsLeadersOutput.generateInterfaces();
+    genSkaterStatsLeadersCurrent.generateInterfaces();
   } catch (error) {
     console.error("Error fetching current skater stats leaders:", error);
   }
 
+  // 5. /v1/skater-stats-leaders/{season}/{game-type}
   try {
-    // Get Skater Stats Leaders for a Specific Season and Game Type
-    const skaterStatsSeasonUrl1 = "https://api-web.nhle.com/v1/skater-stats-leaders/20222023/2?categories=goals&limit=3";
-    const skaterStatsSeasonData1 = await getRequest(skaterStatsSeasonUrl1);
+    const getSkaterStatsLeaders1 = "https://api-web.nhle.com/v1/skater-stats-leaders/20222023/2?categories=points&limit=5";
+    const getSkaterStatsLeaders2 = "https://api-web.nhle.com/v1/skater-stats-leaders/20212022/3?categories=goals&limit=10";
+    const getSkaterStatsLeaders3 = "https://api-web.nhle.com/v1/skater-stats-leaders/20232024/2?categories=assists&limit=3";
 
-    const skaterStatsSeasonUrl2 = "https://api-web.nhle.com/v1/skater-stats-leaders/20212022/3?categories=assists&limit=5";
-    const skaterStatsSeasonData2 = await getRequest(skaterStatsSeasonUrl2);
+    const skaterStatsLeadersData1 = await getRequest(getSkaterStatsLeaders1);
+    const skaterStatsLeadersData2 = await getRequest(getSkaterStatsLeaders2);
+    const skaterStatsLeadersData3 = await getRequest(getSkaterStatsLeaders3);
 
-    const skaterStatsSeasonUrl3 = "https://api-web.nhle.com/v1/skater-stats-leaders/20232024/2?categories=points&limit=10";
-    const skaterStatsSeasonData3 = await getRequest(skaterStatsSeasonUrl3);
-
-    const iSkaterStatsSeasonLeadersOutput = new Gen("ISkaterStatsSeasonLeadersOutput", "./output/interfaces/skater/stats/leaders/season", {
+    const genSkaterStatsLeaders = new Gen("ISkaterStatsLeadersOutput", "./output/interfaces/stats/skater/leaders", {
       backupOldFile: false,
-      fileName: "SkaterStatsSeasonLeaders",
-      jsonVariations: [skaterStatsSeasonData1, skaterStatsSeasonData2, skaterStatsSeasonData3],
+      fileName: "SkaterStatsLeaders",
+      jsonVariations: [skaterStatsLeadersData1, skaterStatsLeadersData2, skaterStatsLeadersData3],
     });
-    iSkaterStatsSeasonLeadersOutput.generateInterfaces();
+    genSkaterStatsLeaders.generateInterfaces();
   } catch (error) {
-    console.error("Error fetching skater stats season leaders:", error);
+    console.error("Error fetching skater stats leaders:", error);
   }
 
+  // 6. /v1/goalie-stats-leaders/current
   try {
-    // Get Current Goalie Stats Leaders
-    const currentGoalieStatsUrl1 = "https://api-web.nhle.com/v1/goalie-stats-leaders/current?categories=wins&limit=5";
-    const currentGoalieStatsData1 = await getRequest(currentGoalieStatsUrl1);
+    const getGoalieStatsLeadersCurrent1 = "https://api-web.nhle.com/v1/goalie-stats-leaders/current?categories=wins&limit=5";
+    const getGoalieStatsLeadersCurrent2 = "https://api-web.nhle.com/v1/goalie-stats-leaders/current?categories=gaa&limit=3";
+    const getGoalieStatsLeadersCurrent3 = "https://api-web.nhle.com/v1/goalie-stats-leaders/current?categories=save-percentage&limit=7";
 
-    const currentGoalieStatsUrl2 = "https://api-web.nhle.com/v1/goalie-stats-leaders/current?categories=save-percentage&limit=3";
-    const currentGoalieStatsData2 = await getRequest(currentGoalieStatsUrl2);
+    const goalieStatsLeadersCurrentData1 = await getRequest(getGoalieStatsLeadersCurrent1);
+    const goalieStatsLeadersCurrentData2 = await getRequest(getGoalieStatsLeadersCurrent2);
+    const goalieStatsLeadersCurrentData3 = await getRequest(getGoalieStatsLeadersCurrent3);
 
-    const currentGoalieStatsUrl3 = "https://api-web.nhle.com/v1/goalie-stats-leaders/current?categories=gaa&limit=10";
-    const currentGoalieStatsData3 = await getRequest(currentGoalieStatsUrl3);
-
-    const iCurrentGoalieStatsLeadersOutput = new Gen("ICurrentGoalieStatsLeadersOutput", "./output/interfaces/goalie/stats/leaders", {
+    const genGoalieStatsLeadersCurrent = new Gen("IGoalieStatsLeadersCurrentOutput", "./output/interfaces/stats/goalie/leaders", {
       backupOldFile: false,
-      fileName: "CurrentGoalieStatsLeaders",
-      jsonVariations: [currentGoalieStatsData1, currentGoalieStatsData2, currentGoalieStatsData3],
+      fileName: "GoalieStatsLeadersCurrent",
+      jsonVariations: [goalieStatsLeadersCurrentData1, goalieStatsLeadersCurrentData2, goalieStatsLeadersCurrentData3],
     });
-    iCurrentGoalieStatsLeadersOutput.generateInterfaces();
+    genGoalieStatsLeadersCurrent.generateInterfaces();
   } catch (error) {
     console.error("Error fetching current goalie stats leaders:", error);
   }
 
+  // 7. /v1/goalie-stats-leaders/{season}/{game-type}
   try {
-    // Get Goalie Stats Leaders by Season
-    const goalieStatsSeasonUrl1 = "https://api-web.nhle.com/v1/goalie-stats-leaders/20232024/2?categories=wins&limit=3";
-    const goalieStatsSeasonData1 = await getRequest(goalieStatsSeasonUrl1);
+    const getGoalieStatsLeaders1 = "https://api-web.nhle.com/v1/goalie-stats-leaders/20232024/2?categories=wins&limit=5";
+    const getGoalieStatsLeaders2 = "https://api-web.nhle.com/v1/goalie-stats-leaders/20222023/3?categories=gaa&limit=7";
+    const getGoalieStatsLeaders3 = "https://api-web.nhle.com/v1/goalie-stats-leaders/20212022/2?categories=save-percentage&limit=10";
 
-    const goalieStatsSeasonUrl2 = "https://api-web.nhle.com/v1/goalie-stats-leaders/20222023/2?categories=gaa&limit=5";
-    const goalieStatsSeasonData2 = await getRequest(goalieStatsSeasonUrl2);
+    const goalieStatsLeadersData1 = await getRequest(getGoalieStatsLeaders1);
+    const goalieStatsLeadersData2 = await getRequest(getGoalieStatsLeaders2);
+    const goalieStatsLeadersData3 = await getRequest(getGoalieStatsLeaders3);
 
-    const goalieStatsSeasonUrl3 = "https://api-web.nhle.com/v1/goalie-stats-leaders/20212022/3?categories=save-percentage&limit=10";
-    const goalieStatsSeasonData3 = await getRequest(goalieStatsSeasonUrl3);
-
-    const iGoalieStatsSeasonLeadersOutput = new Gen("IGoalieStatsSeasonLeadersOutput", "./output/interfaces/goalie/stats/leaders/season", {
+    const genGoalieStatsLeaders = new Gen("IGoalieStatsLeadersOutput", "./output/interfaces/stats/goalie/leaders", {
       backupOldFile: false,
-      fileName: "GoalieStatsSeasonLeaders",
-      jsonVariations: [goalieStatsSeasonData1, goalieStatsSeasonData2, goalieStatsSeasonData3],
+      fileName: "GoalieStatsLeaders",
+      jsonVariations: [goalieStatsLeadersData1, goalieStatsLeadersData2, goalieStatsLeadersData3],
     });
-    iGoalieStatsSeasonLeadersOutput.generateInterfaces();
+    genGoalieStatsLeaders.generateInterfaces();
   } catch (error) {
-    console.error("Error fetching goalie stats season leaders:", error);
+    console.error("Error fetching goalie stats leaders:", error);
   }
 
+  // 8. /v1/player-spotlight
   try {
-    // Get Team Roster As of Now
-    const teamRosterNowUrl = "https://api-web.nhle.com/v1/roster/TOR/current";
-    const teamRosterNowData = await getRequest(teamRosterNowUrl);
+    const getPlayerSpotlight = "https://api-web.nhle.com/v1/player-spotlight";
 
-    const iTeamRosterNowOutput = new Gen("ITeamRosterNowOutput", "./output/interfaces/team/roster/now", {
+    const playerSpotlightData = await getRequest(getPlayerSpotlight);
+
+    const genPlayerSpotlight = new Gen("IPlayerSpotlightOutput", "./output/interfaces/player", {
       backupOldFile: false,
-      fileName: "TeamRosterNow",
-      jsonVariations: [teamRosterNowData],
+      fileName: "PlayerSpotlight",
+      jsonVariations: [playerSpotlightData],
     });
-    iTeamRosterNowOutput.generateInterfaces();
+    genPlayerSpotlight.generateInterfaces();
   } catch (error) {
-    console.error("Error fetching team roster now:", error);
+    console.error("Error fetching player spotlight:", error);
   }
 
+  // 9. /v1/standings/now
   try {
-    // Get Team Roster by Season
-    const teamRosterSeasonUrl1 = "https://api-web.nhle.com/v1/roster/TOR/20232024";
-    const teamRosterSeasonData1 = await getRequest(teamRosterSeasonUrl1);
+    const getStandingsNow = "https://api-web.nhle.com/v1/standings/now";
 
-    const teamRosterSeasonUrl2 = "https://api-web.nhle.com/v1/roster/MTL/20222023";
-    const teamRosterSeasonData2 = await getRequest(teamRosterSeasonUrl2);
+    const standingsNowData = await getRequest(getStandingsNow);
 
-    const teamRosterSeasonUrl3 = "https://api-web.nhle.com/v1/roster/BOS/20212022";
-    const teamRosterSeasonData3 = await getRequest(teamRosterSeasonUrl3);
-
-    const iTeamRosterSeasonOutput = new Gen("ITeamRosterSeasonOutput", "./output/interfaces/team/roster/season", {
+    const genStandingsNow = new Gen("IStandingsNowOutput", "./output/interfaces/standings", {
       backupOldFile: false,
-      fileName: "TeamRosterSeason",
-      jsonVariations: [teamRosterSeasonData1, teamRosterSeasonData2, teamRosterSeasonData3],
+      fileName: "StandingsNow",
+      jsonVariations: [standingsNowData],
     });
-    iTeamRosterSeasonOutput.generateInterfaces();
-  } catch (error) {
-    console.error("Error fetching team roster by season:", error);
-  }
-
-  try {
-    // Get Roster Season for Team
-    const rosterSeasonUrl1 = "https://api-web.nhle.com/v1/roster-season/TOR";
-    const rosterSeasonData1 = await getRequest(rosterSeasonUrl1);
-
-    const rosterSeasonUrl2 = "https://api-web.nhle.com/v1/roster-season/MTL";
-    const rosterSeasonData2 = await getRequest(rosterSeasonUrl2);
-
-    const rosterSeasonUrl3 = "https://api-web.nhle.com/v1/roster-season/BOS";
-    const rosterSeasonData3 = await getRequest(rosterSeasonUrl3);
-
-    const iRosterSeasonOutput = new Gen("IRosterSeasonOutput", "./output/interfaces/team/roster/season/info", {
-      backupOldFile: false,
-      fileName: "RosterSeason",
-      jsonVariations: [rosterSeasonData1, rosterSeasonData2, rosterSeasonData3],
-    });
-    iRosterSeasonOutput.generateInterfaces();
-  } catch (error) {
-    console.error("Error fetching roster season:", error);
-  }
-
-  try {
-    // Get Team Prospects
-    const teamProspectsUrl1 = "https://api-web.nhle.com/v1/prospects/TOR";
-    const teamProspectsData1 = await getRequest(teamProspectsUrl1);
-
-    const teamProspectsUrl2 = "https://api-web.nhle.com/v1/prospects/MTL";
-    const teamProspectsData2 = await getRequest(teamProspectsUrl2);
-
-    const teamProspectsUrl3 = "https://api-web.nhle.com/v1/prospects/BOS";
-    const teamProspectsData3 = await getRequest(teamProspectsUrl3);
-
-    const iTeamProspectsOutput = new Gen("ITeamProspectsOutput", "./output/interfaces/team/prospects", {
-      backupOldFile: false,
-      fileName: "TeamProspects",
-      jsonVariations: [teamProspectsData1, teamProspectsData2, teamProspectsData3],
-    });
-    iTeamProspectsOutput.generateInterfaces();
-  } catch (error) {
-    console.error("Error fetching team prospects:", error);
-  }
-
-  try {
-    // Get Current Standings
-    const currentStandingsUrl = "https://api-web.nhle.com/v1/standings/now";
-    const currentStandingsData = await getRequest(currentStandingsUrl);
-
-    const iCurrentStandingsOutput = new Gen("ICurrentStandingsOutput", "./output/interfaces/standings/current", {
-      backupOldFile: false,
-      fileName: "CurrentStandings",
-      jsonVariations: [currentStandingsData],
-    });
-    iCurrentStandingsOutput.generateInterfaces();
+    genStandingsNow.generateInterfaces();
   } catch (error) {
     console.error("Error fetching current standings:", error);
   }
 
+  // 10. /v1/standings/{date}
   try {
-    // Get Standings by Date
-    const standingsByDateUrl1 = "https://api-web.nhle.com/v1/standings/2023-11-10";
-    const standingsByDateData1 = await getRequest(standingsByDateUrl1);
+    const getStandingsByDate1 = "https://api-web.nhle.com/v1/standings/2023-11-10";
+    const getStandingsByDate2 = "https://api-web.nhle.com/v1/standings/2023-10-15";
+    const getStandingsByDate3 = "https://api-web.nhle.com/v1/standings/2024-01-01";
 
-    const standingsByDateUrl2 = "https://api-web.nhle.com/v1/standings/2023-12-01";
-    const standingsByDateData2 = await getRequest(standingsByDateUrl2);
+    const standingsByDateData1 = await getRequest(getStandingsByDate1);
+    const standingsByDateData2 = await getRequest(getStandingsByDate2);
+    const standingsByDateData3 = await getRequest(getStandingsByDate3);
 
-    const standingsByDateUrl3 = "https://api-web.nhle.com/v1/standings/2023-01-15";
-    const standingsByDateData3 = await getRequest(standingsByDateUrl3);
-
-    const iStandingsByDateOutput = new Gen("IStandingsByDateOutput", "./output/interfaces/standings/by-date", {
+    const genStandingsByDate = new Gen("IStandingsByDateOutput", "./output/interfaces/standings", {
       backupOldFile: false,
       fileName: "StandingsByDate",
       jsonVariations: [standingsByDateData1, standingsByDateData2, standingsByDateData3],
     });
-    iStandingsByDateOutput.generateInterfaces();
+    genStandingsByDate.generateInterfaces();
   } catch (error) {
     console.error("Error fetching standings by date:", error);
   }
 
+  // 11. /v1/standings-season
   try {
-    // Get Standings Information for Each Season
-    const standingsSeasonUrl = "https://api-web.nhle.com/v1/standings-season";
-    const standingsSeasonData = await getRequest(standingsSeasonUrl);
+    const getStandingsSeason = "https://api-web.nhle.com/v1/standings-season";
 
-    const iStandingsSeasonOutput = new Gen("IStandingsSeasonOutput", "./output/interfaces/standings/season", {
+    const standingsSeasonData = await getRequest(getStandingsSeason);
+
+    const genStandingsSeason = new Gen("IStandingsSeasonOutput", "./output/interfaces/standings", {
       backupOldFile: false,
       fileName: "StandingsSeason",
       jsonVariations: [standingsSeasonData],
     });
-    iStandingsSeasonOutput.generateInterfaces();
+    genStandingsSeason.generateInterfaces();
   } catch (error) {
-    console.error("Error fetching standings for season:", error);
+    console.error("Error fetching standings season data:", error);
   }
 
+  // 12. /v1/club-stats/{team}/now
   try {
-    // Get Team Scoreboard as of Now
-    const teamScoreboardUrl1 = "https://api-web.nhle.com/v1/scoreboard/TOR/now";
-    const teamScoreboardData1 = await getRequest(teamScoreboardUrl1);
+    const getClubStatsNow1 = "https://api-web.nhle.com/v1/club-stats/TOR/now";
+    const getClubStatsNow2 = "https://api-web.nhle.com/v1/club-stats/BOS/now";
+    const getClubStatsNow3 = "https://api-web.nhle.com/v1/club-stats/EDM/now";
 
-    const teamScoreboardUrl2 = "https://api-web.nhle.com/v1/scoreboard/MTL/now";
-    const teamScoreboardData2 = await getRequest(teamScoreboardUrl2);
+    const clubStatsNowData1 = await getRequest(getClubStatsNow1);
+    const clubStatsNowData2 = await getRequest(getClubStatsNow2);
+    const clubStatsNowData3 = await getRequest(getClubStatsNow3);
 
-    const teamScoreboardUrl3 = "https://api-web.nhle.com/v1/scoreboard/BOS/now";
-    const teamScoreboardData3 = await getRequest(teamScoreboardUrl3);
-
-    const iTeamScoreboardNowOutput = new Gen("ITeamScoreboardNowOutput", "./output/interfaces/team/scoreboard/now", {
+    const genClubStatsNow = new Gen("IClubStatsNowOutput", "./output/interfaces/club/stats", {
       backupOldFile: false,
-      fileName: "TeamScoreboardNow",
-      jsonVariations: [teamScoreboardData1, teamScoreboardData2, teamScoreboardData3],
+      fileName: "ClubStatsNow",
+      jsonVariations: [clubStatsNowData1, clubStatsNowData2, clubStatsNowData3],
     });
-    iTeamScoreboardNowOutput.generateInterfaces();
+    genClubStatsNow.generateInterfaces();
   } catch (error) {
-    console.error("Error fetching team scoreboard:", error);
+    console.error("Error fetching club stats for now:", error);
   }
 
+  // 13. /v1/club-stats-season/{team}
   try {
-    // Get Club Stats by Season and Game Type
-    const clubStatsSeasonUrl1 = "https://api-web.nhle.com/v1/club-stats/TOR/20232024/2";
-    const clubStatsSeasonData1 = await getRequest(clubStatsSeasonUrl1);
+    const getClubStatsSeason1 = "https://api-web.nhle.com/v1/club-stats-season/TOR";
+    const getClubStatsSeason2 = "https://api-web.nhle.com/v1/club-stats-season/BOS";
+    const getClubStatsSeason3 = "https://api-web.nhle.com/v1/club-stats-season/EDM";
 
-    const clubStatsSeasonUrl2 = "https://api-web.nhle.com/v1/club-stats/MTL/20222023/2";
-    const clubStatsSeasonData2 = await getRequest(clubStatsSeasonUrl2);
+    const clubStatsSeasonData1 = await getRequest(getClubStatsSeason1);
+    const clubStatsSeasonData2 = await getRequest(getClubStatsSeason2);
+    const clubStatsSeasonData3 = await getRequest(getClubStatsSeason3);
 
-    const clubStatsSeasonUrl3 = "https://api-web.nhle.com/v1/club-stats/BOS/20212022/3";
-    const clubStatsSeasonData3 = await getRequest(clubStatsSeasonUrl3);
-
-    const iClubStatsSeasonOutput = new Gen("IClubStatsSeasonOutput", "./output/interfaces/club/stats/season", {
+    const genClubStatsSeason = new Gen("IClubStatsSeasonOutput", "./output/interfaces/club/stats", {
       backupOldFile: false,
       fileName: "ClubStatsSeason",
       jsonVariations: [clubStatsSeasonData1, clubStatsSeasonData2, clubStatsSeasonData3],
     });
-    iClubStatsSeasonOutput.generateInterfaces();
+    genClubStatsSeason.generateInterfaces();
   } catch (error) {
     console.error("Error fetching club stats by season:", error);
   }
 
+  // 14. /v1/club-stats/{team}/{season}/{game-type}
   try {
-    // Get Current Schedule
-    const currentScheduleUrl = "https://api-web.nhle.com/v1/schedule/now";
-    const currentScheduleData = await getRequest(currentScheduleUrl);
+    const getClubStats1 = "https://api-web.nhle.com/v1/club-stats/TOR/20232024/2";
+    const getClubStats2 = "https://api-web.nhle.com/v1/club-stats/BOS/20222023/3";
+    const getClubStats3 = "https://api-web.nhle.com/v1/club-stats/EDM/20212022/2";
 
-    const iCurrentScheduleOutput = new Gen("ICurrentScheduleOutput", "./output/interfaces/schedule/current", {
+    const clubStatsData1 = await getRequest(getClubStats1);
+    const clubStatsData2 = await getRequest(getClubStats2);
+    const clubStatsData3 = await getRequest(getClubStats3);
+
+    const genClubStats = new Gen("IClubStatsOutput", "./output/interfaces/club/stats", {
       backupOldFile: false,
-      fileName: "CurrentSchedule",
-      jsonVariations: [currentScheduleData],
+      fileName: "ClubStats",
+      jsonVariations: [clubStatsData1, clubStatsData2, clubStatsData3],
     });
-    iCurrentScheduleOutput.generateInterfaces();
+    genClubStats.generateInterfaces();
+  } catch (error) {
+    console.error("Error fetching club stats by season and game type:", error);
+  }
+
+  // 15. /v1/scoreboard/{team}/now
+  try {
+    const getScoreboardNow1 = "https://api-web.nhle.com/v1/scoreboard/TOR/now";
+    const getScoreboardNow2 = "https://api-web.nhle.com/v1/scoreboard/BOS/now";
+    const getScoreboardNow3 = "https://api-web.nhle.com/v1/scoreboard/EDM/now";
+
+    const scoreboardNowData1 = await getRequest(getScoreboardNow1);
+    const scoreboardNowData2 = await getRequest(getScoreboardNow2);
+    const scoreboardNowData3 = await getRequest(getScoreboardNow3);
+
+    const genScoreboardNow = new Gen("IScoreboardNowOutput", "./output/interfaces/scoreboard", {
+      backupOldFile: false,
+      fileName: "ScoreboardNow",
+      jsonVariations: [scoreboardNowData1, scoreboardNowData2, scoreboardNowData3],
+    });
+    genScoreboardNow.generateInterfaces();
+  } catch (error) {
+    console.error("Error fetching scoreboard for now:", error);
+  }
+
+  // 16. /v1/roster/{team}/current
+  try {
+    const getTeamRosterNow1 = "https://api-web.nhle.com/v1/roster/TOR/current";
+    const getTeamRosterNow2 = "https://api-web.nhle.com/v1/roster/BOS/current";
+    const getTeamRosterNow3 = "https://api-web.nhle.com/v1/roster/EDM/current";
+
+    const teamRosterNowData1 = await getRequest(getTeamRosterNow1);
+    const teamRosterNowData2 = await getRequest(getTeamRosterNow2);
+    const teamRosterNowData3 = await getRequest(getTeamRosterNow3);
+
+    const genTeamRosterNow = new Gen("ITeamRosterNowOutput", "./output/interfaces/roster", {
+      backupOldFile: false,
+      fileName: "TeamRosterNow",
+      jsonVariations: [teamRosterNowData1, teamRosterNowData2, teamRosterNowData3],
+    });
+    genTeamRosterNow.generateInterfaces();
+  } catch (error) {
+    console.error("Error fetching current team roster:", error);
+  }
+
+  // 17. /v1/roster/{team}/{season}
+  try {
+    const getTeamRoster1 = "https://api-web.nhle.com/v1/roster/TOR/20232024";
+    const getTeamRoster2 = "https://api-web.nhle.com/v1/roster/BOS/20222023";
+    const getTeamRoster3 = "https://api-web.nhle.com/v1/roster/EDM/20212022";
+
+    const teamRosterData1 = await getRequest(getTeamRoster1);
+    const teamRosterData2 = await getRequest(getTeamRoster2);
+    const teamRosterData3 = await getRequest(getTeamRoster3);
+
+    const genTeamRoster = new Gen("ITeamRosterOutput", "./output/interfaces/roster", {
+      backupOldFile: false,
+      fileName: "TeamRoster",
+      jsonVariations: [teamRosterData1, teamRosterData2, teamRosterData3],
+    });
+    genTeamRoster.generateInterfaces();
+  } catch (error) {
+    console.error("Error fetching team roster by season:", error);
+  }
+
+  // 18. /v1/roster-season/{team}
+  try {
+    const getRosterSeason1 = "https://api-web.nhle.com/v1/roster-season/TOR";
+    const getRosterSeason2 = "https://api-web.nhle.com/v1/roster-season/BOS";
+    const getRosterSeason3 = "https://api-web.nhle.com/v1/roster-season/EDM";
+
+    const rosterSeasonData1 = await getRequest(getRosterSeason1);
+    const rosterSeasonData2 = await getRequest(getRosterSeason2);
+    const rosterSeasonData3 = await getRequest(getRosterSeason3);
+
+    const genRosterSeason = new Gen("IRosterSeasonOutput", "./output/interfaces/roster", {
+      backupOldFile: false,
+      fileName: "RosterSeason",
+      jsonVariations: [rosterSeasonData1, rosterSeasonData2, rosterSeasonData3],
+    });
+    genRosterSeason.generateInterfaces();
+  } catch (error) {
+    console.error("Error fetching roster seasons:", error);
+  }
+
+  // 19. /v1/prospects/{team}
+  try {
+    const getTeamProspects1 = "https://api-web.nhle.com/v1/prospects/TOR";
+    const getTeamProspects2 = "https://api-web.nhle.com/v1/prospects/BOS";
+    const getTeamProspects3 = "https://api-web.nhle.com/v1/prospects/EDM";
+
+    const teamProspectsData1 = await getRequest(getTeamProspects1);
+    const teamProspectsData2 = await getRequest(getTeamProspects2);
+    const teamProspectsData3 = await getRequest(getTeamProspects3);
+
+    const genTeamProspects = new Gen("ITeamProspectsOutput", "./output/interfaces/prospects", {
+      backupOldFile: false,
+      fileName: "TeamProspects",
+      jsonVariations: [teamProspectsData1, teamProspectsData2, teamProspectsData3],
+    });
+    genTeamProspects.generateInterfaces();
+  } catch (error) {
+    console.error("Error fetching team prospects:", error);
+  }
+
+  // 20. /v1/club-schedule-season/{team}/now
+  try {
+    const getClubScheduleNow1 = "https://api-web.nhle.com/v1/club-schedule-season/TOR/now";
+    const getClubScheduleNow2 = "https://api-web.nhle.com/v1/club-schedule-season/BOS/now";
+    const getClubScheduleNow3 = "https://api-web.nhle.com/v1/club-schedule-season/EDM/now";
+
+    const clubScheduleNowData1 = await getRequest(getClubScheduleNow1);
+    const clubScheduleNowData2 = await getRequest(getClubScheduleNow2);
+    const clubScheduleNowData3 = await getRequest(getClubScheduleNow3);
+
+    const genClubScheduleNow = new Gen("IClubScheduleNowOutput", "./output/interfaces/club/schedule", {
+      backupOldFile: false,
+      fileName: "ClubScheduleNow",
+      jsonVariations: [clubScheduleNowData1, clubScheduleNowData2, clubScheduleNowData3],
+    });
+    genClubScheduleNow.generateInterfaces();
+  } catch (error) {
+    console.error("Error fetching club schedule for now:", error);
+  }
+
+  // 21. /v1/club-schedule-season/{team}/{season}
+  try {
+    const getClubSchedule1 = "https://api-web.nhle.com/v1/club-schedule-season/TOR/20232024";
+    const getClubSchedule2 = "https://api-web.nhle.com/v1/club-schedule-season/BOS/20222023";
+    const getClubSchedule3 = "https://api-web.nhle.com/v1/club-schedule-season/EDM/20212022";
+
+    const clubScheduleData1 = await getRequest(getClubSchedule1);
+    const clubScheduleData2 = await getRequest(getClubSchedule2);
+    const clubScheduleData3 = await getRequest(getClubSchedule3);
+
+    const genClubSchedule = new Gen("IClubScheduleOutput", "./output/interfaces/club/schedule", {
+      backupOldFile: false,
+      fileName: "ClubSchedule",
+      jsonVariations: [clubScheduleData1, clubScheduleData2, clubScheduleData3],
+    });
+    genClubSchedule.generateInterfaces();
+  } catch (error) {
+    console.error("Error fetching club schedule by season:", error);
+  }
+
+  // 22. /v1/club-schedule/{team}/month/now
+  try {
+    const getClubScheduleMonthNow1 = "https://api-web.nhle.com/v1/club-schedule/TOR/month/now";
+    const getClubScheduleMonthNow2 = "https://api-web.nhle.com/v1/club-schedule/BOS/month/now";
+    const getClubScheduleMonthNow3 = "https://api-web.nhle.com/v1/club-schedule/EDM/month/now";
+
+    const clubScheduleMonthNowData1 = await getRequest(getClubScheduleMonthNow1);
+    const clubScheduleMonthNowData2 = await getRequest(getClubScheduleMonthNow2);
+    const clubScheduleMonthNowData3 = await getRequest(getClubScheduleMonthNow3);
+
+    const genClubScheduleMonthNow = new Gen("IClubScheduleMonthNowOutput", "./output/interfaces/club/schedule", {
+      backupOldFile: false,
+      fileName: "ClubScheduleMonthNow",
+      jsonVariations: [clubScheduleMonthNowData1, clubScheduleMonthNowData2, clubScheduleMonthNowData3],
+    });
+    genClubScheduleMonthNow.generateInterfaces();
+  } catch (error) {
+    console.error("Error fetching club monthly schedule:", error);
+  }
+
+  // 23. /v1/club-schedule/{team}/month/{month}
+  try {
+    const getClubScheduleMonth1 = "https://api-web.nhle.com/v1/club-schedule/TOR/month/2023-11";
+    const getClubScheduleMonth2 = "https://api-web.nhle.com/v1/club-schedule/BOS/month/2023-12";
+    const getClubScheduleMonth3 = "https://api-web.nhle.com/v1/club-schedule/EDM/month/2024-01";
+
+    const clubScheduleMonthData1 = await getRequest(getClubScheduleMonth1);
+    const clubScheduleMonthData2 = await getRequest(getClubScheduleMonth2);
+    const clubScheduleMonthData3 = await getRequest(getClubScheduleMonth3);
+
+    const genClubScheduleMonth = new Gen("IClubScheduleMonthOutput", "./output/interfaces/club/schedule", {
+      backupOldFile: false,
+      fileName: "ClubScheduleMonth",
+      jsonVariations: [clubScheduleMonthData1, clubScheduleMonthData2, clubScheduleMonthData3],
+    });
+    genClubScheduleMonth.generateInterfaces();
+  } catch (error) {
+    console.error("Error fetching club schedule by month:", error);
+  }
+
+  // 24. /v1/club-schedule/{team}/week/{date}
+  try {
+    const getClubScheduleWeek1 = "https://api-web.nhle.com/v1/club-schedule/TOR/week/2023-11-10";
+    const getClubScheduleWeek2 = "https://api-web.nhle.com/v1/club-schedule/BOS/week/2023-11-15";
+    const getClubScheduleWeek3 = "https://api-web.nhle.com/v1/club-schedule/EDM/week/2023-12-01";
+
+    const clubScheduleWeekData1 = await getRequest(getClubScheduleWeek1);
+    const clubScheduleWeekData2 = await getRequest(getClubScheduleWeek2);
+    const clubScheduleWeekData3 = await getRequest(getClubScheduleWeek3);
+
+    const genClubScheduleWeek = new Gen("IClubScheduleWeekOutput", "./output/interfaces/club/schedule", {
+      backupOldFile: false,
+      fileName: "ClubScheduleWeek",
+      jsonVariations: [clubScheduleWeekData1, clubScheduleWeekData2, clubScheduleWeekData3],
+    });
+    genClubScheduleWeek.generateInterfaces();
+  } catch (error) {
+    console.error("Error fetching club weekly schedule:", error);
+  }
+
+  // 25. /v1/club-schedule/{team}/week/now
+  try {
+    const getClubScheduleWeekNow1 = "https://api-web.nhle.com/v1/club-schedule/TOR/week/now";
+    const getClubScheduleWeekNow2 = "https://api-web.nhle.com/v1/club-schedule/BOS/week/now";
+    const getClubScheduleWeekNow3 = "https://api-web.nhle.com/v1/club-schedule/EDM/week/now";
+
+    const clubScheduleWeekNowData1 = await getRequest(getClubScheduleWeekNow1);
+    const clubScheduleWeekNowData2 = await getRequest(getClubScheduleWeekNow2);
+    const clubScheduleWeekNowData3 = await getRequest(getClubScheduleWeekNow3);
+
+    const genClubScheduleWeekNow = new Gen("IClubScheduleWeekNowOutput", "./output/interfaces/club/schedule", {
+      backupOldFile: false,
+      fileName: "ClubScheduleWeekNow",
+      jsonVariations: [clubScheduleWeekNowData1, clubScheduleWeekNowData2, clubScheduleWeekNowData3],
+    });
+    genClubScheduleWeekNow.generateInterfaces();
+  } catch (error) {
+    console.error("Error fetching weekly schedule for now:", error);
+  }
+
+  // 26. /v1/schedule/now
+  try {
+    const getScheduleNow = "https://api-web.nhle.com/v1/schedule/now";
+
+    const scheduleNowData = await getRequest(getScheduleNow);
+
+    const genScheduleNow = new Gen("IScheduleNowOutput", "./output/interfaces/schedule", {
+      backupOldFile: false,
+      fileName: "ScheduleNow",
+      jsonVariations: [scheduleNowData],
+    });
+    genScheduleNow.generateInterfaces();
   } catch (error) {
     console.error("Error fetching current schedule:", error);
   }
 
+  // 27. /v1/schedule/{date}
   try {
-    // Get Schedule by Date
-    const scheduleByDateUrl1 = "https://api-web.nhle.com/v1/schedule/2023-11-10";
-    const scheduleByDateData1 = await getRequest(scheduleByDateUrl1);
+    const getScheduleByDate1 = "https://api-web.nhle.com/v1/schedule/2023-11-10";
+    const getScheduleByDate2 = "https://api-web.nhle.com/v1/schedule/2023-10-20";
+    const getScheduleByDate3 = "https://api-web.nhle.com/v1/schedule/2024-01-01";
 
-    const scheduleByDateUrl2 = "https://api-web.nhle.com/v1/schedule/2023-12-15";
-    const scheduleByDateData2 = await getRequest(scheduleByDateUrl2);
+    const scheduleByDateData1 = await getRequest(getScheduleByDate1);
+    const scheduleByDateData2 = await getRequest(getScheduleByDate2);
+    const scheduleByDateData3 = await getRequest(getScheduleByDate3);
 
-    const scheduleByDateUrl3 = "https://api-web.nhle.com/v1/schedule/2024-01-01";
-    const scheduleByDateData3 = await getRequest(scheduleByDateUrl3);
-
-    const iScheduleByDateOutput = new Gen("IScheduleByDateOutput", "./output/interfaces/schedule/by-date", {
+    const genScheduleByDate = new Gen("IScheduleByDateOutput", "./output/interfaces/schedule", {
       backupOldFile: false,
       fileName: "ScheduleByDate",
       jsonVariations: [scheduleByDateData1, scheduleByDateData2, scheduleByDateData3],
     });
-    iScheduleByDateOutput.generateInterfaces();
+    genScheduleByDate.generateInterfaces();
   } catch (error) {
     console.error("Error fetching schedule by date:", error);
   }
 
+  // 28. /v1/schedule-calendar/now
   try {
-    // Get Play By Play
-    const playByPlayUrl1 = "https://api-web.nhle.com/v1/gamecenter/2023020204/play-by-play";
-    const playByPlayData1 = await getRequest(playByPlayUrl1);
+    const getScheduleCalendarNow = "https://api-web.nhle.com/v1/schedule-calendar/now";
 
-    const playByPlayUrl2 = "https://api-web.nhle.com/v1/gamecenter/2023020205/play-by-play";
-    const playByPlayData2 = await getRequest(playByPlayUrl2);
+    const scheduleCalendarNowData = await getRequest(getScheduleCalendarNow);
 
-    const playByPlayUrl3 = "https://api-web.nhle.com/v1/gamecenter/2023020206/play-by-play";
-    const playByPlayData3 = await getRequest(playByPlayUrl3);
-
-    const iPlayByPlayOutput = new Gen("IPlayByPlayOutput", "./output/interfaces/gamecenter/play-by-play", {
+    const genScheduleCalendarNow = new Gen("IScheduleCalendarNowOutput", "./output/interfaces/schedule/calendar", {
       backupOldFile: false,
-      fileName: "PlayByPlay",
-      jsonVariations: [playByPlayData1, playByPlayData2, playByPlayData3],
+      fileName: "ScheduleCalendarNow",
+      jsonVariations: [scheduleCalendarNowData],
     });
-    iPlayByPlayOutput.generateInterfaces();
+    genScheduleCalendarNow.generateInterfaces();
   } catch (error) {
-    console.error("Error fetching play by play data:", error);
+    console.error("Error fetching current schedule calendar:", error);
   }
 
+  // 29. /v1/schedule-calendar/{date}
   try {
-    // Get Landing
-    const gameLandingUrl1 = "https://api-web.nhle.com/v1/gamecenter/2023020204/landing";
-    const gameLandingData1 = await getRequest(gameLandingUrl1);
+    const getScheduleCalendar1 = "https://api-web.nhle.com/v1/schedule-calendar/2023-11-10";
+    const getScheduleCalendar2 = "https://api-web.nhle.com/v1/schedule-calendar/2023-10-20";
+    const getScheduleCalendar3 = "https://api-web.nhle.com/v1/schedule-calendar/2024-01-01";
 
-    const gameLandingUrl2 = "https://api-web.nhle.com/v1/gamecenter/2023020205/landing";
-    const gameLandingData2 = await getRequest(gameLandingUrl2);
+    const scheduleCalendarData1 = await getRequest(getScheduleCalendar1);
+    const scheduleCalendarData2 = await getRequest(getScheduleCalendar2);
+    const scheduleCalendarData3 = await getRequest(getScheduleCalendar3);
 
-    const gameLandingUrl3 = "https://api-web.nhle.com/v1/gamecenter/2023020206/landing";
-    const gameLandingData3 = await getRequest(gameLandingUrl3);
+    const genScheduleCalendar = new Gen("IScheduleCalendarOutput", "./output/interfaces/schedule/calendar", {
+      backupOldFile: false,
+      fileName: "ScheduleCalendar",
+      jsonVariations: [scheduleCalendarData1, scheduleCalendarData2, scheduleCalendarData3],
+    });
+    genScheduleCalendar.generateInterfaces();
+  } catch (error) {
+    console.error("Error fetching schedule calendar by date:", error);
+  }
 
-    const iGameLandingOutput = new Gen("IGameLandingOutput", "./output/interfaces/gamecenter/landing", {
+  // 30. /v1/score/now
+  try {
+    const getDailyScoresNow = "https://api-web.nhle.com/v1/score/now";
+
+    const dailyScoresNowData = await getRequest(getDailyScoresNow);
+
+    const genDailyScoresNow = new Gen("IDailyScoresNowOutput", "./output/interfaces/score", {
+      backupOldFile: false,
+      fileName: "DailyScoresNow",
+      jsonVariations: [dailyScoresNowData],
+    });
+    genDailyScoresNow.generateInterfaces();
+  } catch (error) {
+    console.error("Error fetching current daily scores:", error);
+  }
+
+  // 31. /v1/score/{date}
+  try {
+    const getDailyScoresByDate1 = "https://api-web.nhle.com/v1/score/2023-11-10";
+    const getDailyScoresByDate2 = "https://api-web.nhle.com/v1/score/2023-10-20";
+    const getDailyScoresByDate3 = "https://api-web.nhle.com/v1/score/2024-01-01";
+
+    const dailyScoresByDateData1 = await getRequest(getDailyScoresByDate1);
+    const dailyScoresByDateData2 = await getRequest(getDailyScoresByDate2);
+    const dailyScoresByDateData3 = await getRequest(getDailyScoresByDate3);
+
+    const genDailyScoresByDate = new Gen("IDailyScoresByDateOutput", "./output/interfaces/score", {
+      backupOldFile: false,
+      fileName: "DailyScoresByDate",
+      jsonVariations: [dailyScoresByDateData1, dailyScoresByDateData2, dailyScoresByDateData3],
+    });
+    genDailyScoresByDate.generateInterfaces();
+  } catch (error) {
+    console.error("Error fetching daily scores by date:", error);
+  }
+
+  // 32. /v1/scoreboard/now
+  try {
+    const getScoreboardNow = "https://api-web.nhle.com/v1/scoreboard/now";
+
+    const scoreboardNowData = await getRequest(getScoreboardNow);
+
+    const genScoreboardNow = new Gen("IScoreboardNowOutput", "./output/interfaces/scoreboard", {
+      backupOldFile: false,
+      fileName: "ScoreboardNow",
+      jsonVariations: [scoreboardNowData],
+    });
+    genScoreboardNow.generateInterfaces();
+  } catch (error) {
+    console.error("Error fetching current scoreboard:", error);
+  }
+
+  // 33. /v1/where-to-watch
+  try {
+    const getWhereToWatch = "https://api-web.nhle.com/v1/where-to-watch";
+
+    const whereToWatchData = await getRequest(getWhereToWatch);
+
+    const genWhereToWatch = new Gen("IWhereToWatchOutput", "./output/interfaces/where-to-watch", {
+      backupOldFile: false,
+      fileName: "WhereToWatch",
+      jsonVariations: [whereToWatchData],
+    });
+    genWhereToWatch.generateInterfaces();
+  } catch (error) {
+    console.error("Error fetching where-to-watch information:", error);
+  }
+
+  // 34. /v1/gamecenter/{game-id}/play-by-play
+  try {
+    const getGamePlayByPlay1 = "https://api-web.nhle.com/v1/gamecenter/2023020204/play-by-play";
+    const getGamePlayByPlay2 = "https://api-web.nhle.com/v1/gamecenter/2023020205/play-by-play";
+    const getGamePlayByPlay3 = "https://api-web.nhle.com/v1/gamecenter/2023020206/play-by-play";
+
+    const gamePlayByPlayData1 = await getRequest(getGamePlayByPlay1);
+    const gamePlayByPlayData2 = await getRequest(getGamePlayByPlay2);
+    const gamePlayByPlayData3 = await getRequest(getGamePlayByPlay3);
+
+    const genGamePlayByPlay = new Gen("IGamePlayByPlayOutput", "./output/interfaces/gamecenter/play-by-play", {
+      backupOldFile: false,
+      fileName: "GamePlayByPlay",
+      jsonVariations: [gamePlayByPlayData1, gamePlayByPlayData2, gamePlayByPlayData3],
+    });
+    genGamePlayByPlay.generateInterfaces();
+  } catch (error) {
+    console.error("Error fetching game play-by-play data:", error);
+  }
+
+  // 35. /v1/gamecenter/{game-id}/landing
+  try {
+    const getGameLanding1 = "https://api-web.nhle.com/v1/gamecenter/2023020204/landing";
+    const getGameLanding2 = "https://api-web.nhle.com/v1/gamecenter/2023020205/landing";
+    const getGameLanding3 = "https://api-web.nhle.com/v1/gamecenter/2023020206/landing";
+
+    const gameLandingData1 = await getRequest(getGameLanding1);
+    const gameLandingData2 = await getRequest(getGameLanding2);
+    const gameLandingData3 = await getRequest(getGameLanding3);
+
+    const genGameLanding = new Gen("IGameLandingOutput", "./output/interfaces/gamecenter/landing", {
       backupOldFile: false,
       fileName: "GameLanding",
       jsonVariations: [gameLandingData1, gameLandingData2, gameLandingData3],
     });
-    iGameLandingOutput.generateInterfaces();
+    genGameLanding.generateInterfaces();
   } catch (error) {
     console.error("Error fetching game landing data:", error);
   }
 
+  // 36. /v1/gamecenter/{game-id}/boxscore
   try {
-    // Get Boxscore
-    const boxscoreUrl1 = "https://api-web.nhle.com/v1/gamecenter/2023020204/boxscore";
-    const boxscoreData1 = await getRequest(boxscoreUrl1);
+    const getGameBoxscore1 = "https://api-web.nhle.com/v1/gamecenter/2023020204/boxscore";
+    const getGameBoxscore2 = "https://api-web.nhle.com/v1/gamecenter/2023020205/boxscore";
+    const getGameBoxscore3 = "https://api-web.nhle.com/v1/gamecenter/2023020206/boxscore";
 
-    const boxscoreUrl2 = "https://api-web.nhle.com/v1/gamecenter/2023020205/boxscore";
-    const boxscoreData2 = await getRequest(boxscoreUrl2);
+    const gameBoxscoreData1 = await getRequest(getGameBoxscore1);
+    const gameBoxscoreData2 = await getRequest(getGameBoxscore2);
+    const gameBoxscoreData3 = await getRequest(getGameBoxscore3);
 
-    const boxscoreUrl3 = "https://api-web.nhle.com/v1/gamecenter/2023020206/boxscore";
-    const boxscoreData3 = await getRequest(boxscoreUrl3);
-
-    const iBoxscoreOutput = new Gen("IBoxscoreOutput", "./output/interfaces/gamecenter/boxscore", {
+    const genGameBoxscore = new Gen("IGameBoxscoreOutput", "./output/interfaces/gamecenter/boxscore", {
       backupOldFile: false,
-      fileName: "Boxscore",
-      jsonVariations: [boxscoreData1, boxscoreData2, boxscoreData3],
+      fileName: "GameBoxscore",
+      jsonVariations: [gameBoxscoreData1, gameBoxscoreData2, gameBoxscoreData3],
     });
-    iBoxscoreOutput.generateInterfaces();
+    genGameBoxscore.generateInterfaces();
   } catch (error) {
-    console.error("Error fetching boxscore data:", error);
+    console.error("Error fetching game boxscore data:", error);
   }
 
+  // 37. /v1/wsc/game-story/{game-id}
   try {
-    // Get Game Story
-    const gameStoryUrl1 = "https://api-web.nhle.com/v1/wsc/game-story/2023020204";
-    const gameStoryData1 = await getRequest(gameStoryUrl1);
+    const getGameStory1 = "https://api-web.nhle.com/v1/wsc/game-story/2023020204";
+    const getGameStory2 = "https://api-web.nhle.com/v1/wsc/game-story/2023020205";
+    const getGameStory3 = "https://api-web.nhle.com/v1/wsc/game-story/2023020206";
 
-    const gameStoryUrl2 = "https://api-web.nhle.com/v1/wsc/game-story/2023020205";
-    const gameStoryData2 = await getRequest(gameStoryUrl2);
+    const gameStoryData1 = await getRequest(getGameStory1);
+    const gameStoryData2 = await getRequest(getGameStory2);
+    const gameStoryData3 = await getRequest(getGameStory3);
 
-    const gameStoryUrl3 = "https://api-web.nhle.com/v1/wsc/game-story/2023020206";
-    const gameStoryData3 = await getRequest(gameStoryUrl3);
-
-    const iGameStoryOutput = new Gen("IGameStoryOutput", "./output/interfaces/gamecenter/game-story", {
+    const genGameStory = new Gen("IGameStoryOutput", "./output/interfaces/wsc/game-story", {
       backupOldFile: false,
       fileName: "GameStory",
       jsonVariations: [gameStoryData1, gameStoryData2, gameStoryData3],
     });
-    iGameStoryOutput.generateInterfaces();
+    genGameStory.generateInterfaces();
   } catch (error) {
-    console.error("Error fetching game story data:", error);
+    console.error("Error fetching game story:", error);
   }
 
+  // 38. /v1/network/tv-schedule/{date}
   try {
-    // Get TV Schedule for a Specific Date
-    const tvScheduleByDateUrl1 = "https://api-web.nhle.com/v1/network/tv-schedule/2023-11-10";
-    const tvScheduleByDateData1 = await getRequest(tvScheduleByDateUrl1);
+    const getTvSchedule1 = "https://api-web.nhle.com/v1/network/tv-schedule/2023-11-10";
+    const getTvSchedule2 = "https://api-web.nhle.com/v1/network/tv-schedule/2023-10-15";
+    const getTvSchedule3 = "https://api-web.nhle.com/v1/network/tv-schedule/2024-01-01";
 
-    const tvScheduleByDateUrl2 = "https://api-web.nhle.com/v1/network/tv-schedule/2023-12-01";
-    const tvScheduleByDateData2 = await getRequest(tvScheduleByDateUrl2);
+    const tvScheduleData1 = await getRequest(getTvSchedule1);
+    const tvScheduleData2 = await getRequest(getTvSchedule2);
+    const tvScheduleData3 = await getRequest(getTvSchedule3);
 
-    const tvScheduleByDateUrl3 = "https://api-web.nhle.com/v1/network/tv-schedule/2023-01-15";
-    const tvScheduleByDateData3 = await getRequest(tvScheduleByDateUrl3);
-
-    const iTvScheduleByDateOutput = new Gen("ITvScheduleByDateOutput", "./output/interfaces/network/tv-schedule", {
+    const genTvSchedule = new Gen("ITvScheduleOutput", "./output/interfaces/network/tv-schedule", {
       backupOldFile: false,
-      fileName: "TvScheduleByDate",
-      jsonVariations: [tvScheduleByDateData1, tvScheduleByDateData2, tvScheduleByDateData3],
+      fileName: "TvSchedule",
+      jsonVariations: [tvScheduleData1, tvScheduleData2, tvScheduleData3],
     });
-    iTvScheduleByDateOutput.generateInterfaces();
+    genTvSchedule.generateInterfaces();
   } catch (error) {
-    console.error("Error fetching TV schedule by date:", error);
+    console.error("Error fetching TV schedule:", error);
   }
 
+  // 39. /v1/network/tv-schedule/now
   try {
-    // Get Streams
-    const streamsUrl = "https://api-web.nhle.com/v1/where-to-watch";
-    const streamsData = await getRequest(streamsUrl);
+    const getTvScheduleNow = "https://api-web.nhle.com/v1/network/tv-schedule/now";
 
-    const iStreamsOutput = new Gen("IStreamsOutput", "./output/interfaces/network/streams", {
+    const tvScheduleNowData = await getRequest(getTvScheduleNow);
+
+    const genTvScheduleNow = new Gen("ITvScheduleNowOutput", "./output/interfaces/network/tv-schedule", {
       backupOldFile: false,
-      fileName: "Streams",
-      jsonVariations: [streamsData],
+      fileName: "TvScheduleNow",
+      jsonVariations: [tvScheduleNowData],
     });
-    iStreamsOutput.generateInterfaces();
+    genTvScheduleNow.generateInterfaces();
   } catch (error) {
-    console.error("Error fetching streams data:", error);
+    console.error("Error fetching current TV schedule:", error);
   }
 
+  // 40. /v1/partner-game/{country-code}/now
   try {
-    // Get Meta Information
-    const metaInfoUrl1 = "https://api-web.nhle.com/v1/meta?players=8478402&teams=EDM,TOR";
-    const metaInfoData1 = await getRequest(metaInfoUrl1);
+    const getPartnerGameOdds1 = "https://api-web.nhle.com/v1/partner-game/US/now";
+    const getPartnerGameOdds2 = "https://api-web.nhle.com/v1/partner-game/CA/now";
+    const getPartnerGameOdds3 = "https://api-web.nhle.com/v1/partner-game/MX/now";
 
-    const metaInfoUrl2 = "https://api-web.nhle.com/v1/meta?players=8478403&teams=MTL,BOS";
-    const metaInfoData2 = await getRequest(metaInfoUrl2);
+    const partnerGameOddsData1 = await getRequest(getPartnerGameOdds1);
+    const partnerGameOddsData2 = await getRequest(getPartnerGameOdds2);
+    const partnerGameOddsData3 = await getRequest(getPartnerGameOdds3);
 
-    const metaInfoUrl3 = "https://api-web.nhle.com/v1/meta?players=8478404&teams=NYR,CHI";
-    const metaInfoData3 = await getRequest(metaInfoUrl3);
+    const genPartnerGameOdds = new Gen("IPartnerGameOddsOutput", "./output/interfaces/partner-game", {
+      backupOldFile: false,
+      fileName: "PartnerGameOdds",
+      jsonVariations: [partnerGameOddsData1, partnerGameOddsData2, partnerGameOddsData3],
+    });
+    genPartnerGameOdds.generateInterfaces();
+  } catch (error) {
+    console.error("Error fetching partner game odds:", error);
+  }
 
-    const iMetaInfoOutput = new Gen("IMetaInfoOutput", "./output/interfaces/meta/info", {
+  // 41. /v1/playoff-series/carousel/{season}
+  try {
+    const getPlayoffSeriesCarousel1 = "https://api-web.nhle.com/v1/playoff-series/carousel/20232024";
+    const getPlayoffSeriesCarousel2 = "https://api-web.nhle.com/v1/playoff-series/carousel/20222023";
+    const getPlayoffSeriesCarousel3 = "https://api-web.nhle.com/v1/playoff-series/carousel/20212022";
+
+    const playoffSeriesCarouselData1 = await getRequest(getPlayoffSeriesCarousel1);
+    const playoffSeriesCarouselData2 = await getRequest(getPlayoffSeriesCarousel2);
+    const playoffSeriesCarouselData3 = await getRequest(getPlayoffSeriesCarousel3);
+
+    const genPlayoffSeriesCarousel = new Gen("IPlayoffSeriesCarouselOutput", "./output/interfaces/playoff-series/carousel", {
+      backupOldFile: false,
+      fileName: "PlayoffSeriesCarousel",
+      jsonVariations: [playoffSeriesCarouselData1, playoffSeriesCarouselData2, playoffSeriesCarouselData3],
+    });
+    genPlayoffSeriesCarousel.generateInterfaces();
+  } catch (error) {
+    console.error("Error fetching playoff series carousel:", error);
+  }
+
+  // 42. /v1/schedule/playoff-series/{season}/{series_letter}
+  try {
+    const getPlayoffSeriesSchedule1 = "https://api-web.nhle.com/v1/schedule/playoff-series/20232024/a";
+    const getPlayoffSeriesSchedule2 = "https://api-web.nhle.com/v1/schedule/playoff-series/20232024/b";
+    const getPlayoffSeriesSchedule3 = "https://api-web.nhle.com/v1/schedule/playoff-series/20232024/c";
+
+    const playoffSeriesScheduleData1 = await getRequest(getPlayoffSeriesSchedule1);
+    const playoffSeriesScheduleData2 = await getRequest(getPlayoffSeriesSchedule2);
+    const playoffSeriesScheduleData3 = await getRequest(getPlayoffSeriesSchedule3);
+
+    const genPlayoffSeriesSchedule = new Gen("IPlayoffSeriesScheduleOutput", "./output/interfaces/schedule/playoff-series", {
+      backupOldFile: false,
+      fileName: "PlayoffSeriesSchedule",
+      jsonVariations: [playoffSeriesScheduleData1, playoffSeriesScheduleData2, playoffSeriesScheduleData3],
+    });
+    genPlayoffSeriesSchedule.generateInterfaces();
+  } catch (error) {
+    console.error("Error fetching playoff series schedule:", error);
+  }
+
+  // 43. /v1/playoff-bracket/{year}
+  try {
+    const getPlayoffBracket1 = "https://api-web.nhle.com/v1/playoff-bracket/2022";
+    const getPlayoffBracket2 = "https://api-web.nhle.com/v1/playoff-bracket/2023";
+    const getPlayoffBracket3 = "https://api-web.nhle.com/v1/playoff-bracket/2024";
+
+    const playoffBracketData1 = await getRequest(getPlayoffBracket1);
+    const playoffBracketData2 = await getRequest(getPlayoffBracket2);
+    const playoffBracketData3 = await getRequest(getPlayoffBracket3);
+
+    const genPlayoffBracket = new Gen("IPlayoffBracketOutput", "./output/interfaces/playoff-bracket", {
+      backupOldFile: false,
+      fileName: "PlayoffBracket",
+      jsonVariations: [playoffBracketData1, playoffBracketData2, playoffBracketData3],
+    });
+    genPlayoffBracket.generateInterfaces();
+  } catch (error) {
+    console.error("Error fetching playoff bracket:", error);
+  }
+
+  // 44. /v1/season
+  try {
+    const getSeasons = "https://api-web.nhle.com/v1/season";
+
+    const seasonsData = await getRequest(getSeasons);
+
+    const genSeasons = new Gen("ISeasonsOutput", "./output/interfaces/season", {
+      backupOldFile: false,
+      fileName: "Seasons",
+      jsonVariations: [seasonsData],
+    });
+    genSeasons.generateInterfaces();
+  } catch (error) {
+    console.error("Error fetching seasons:", error);
+  }
+
+  // 45. /v1/draft/rankings/now
+  try {
+    const getDraftRankingsNow = "https://api-web.nhle.com/v1/draft/rankings/now";
+
+    const draftRankingsNowData = await getRequest(getDraftRankingsNow);
+
+    const genDraftRankingsNow = new Gen("IDraftRankingsNowOutput", "./output/interfaces/draft/rankings", {
+      backupOldFile: false,
+      fileName: "DraftRankingsNow",
+      jsonVariations: [draftRankingsNowData],
+    });
+    genDraftRankingsNow.generateInterfaces();
+  } catch (error) {
+    console.error("Error fetching current draft rankings:", error);
+  }
+
+  // 46. /v1/draft/rankings/{season}/{prospect_category}
+  try {
+    const getDraftRankings1 = "https://api-web.nhle.com/v1/draft/rankings/2023/1";
+    const getDraftRankings2 = "https://api-web.nhle.com/v1/draft/rankings/2022/2";
+    const getDraftRankings3 = "https://api-web.nhle.com/v1/draft/rankings/2021/3";
+
+    const draftRankingsData1 = await getRequest(getDraftRankings1);
+    const draftRankingsData2 = await getRequest(getDraftRankings2);
+    const draftRankingsData3 = await getRequest(getDraftRankings3);
+
+    const genDraftRankings = new Gen("IDraftRankingsOutput", "./output/interfaces/draft/rankings", {
+      backupOldFile: false,
+      fileName: "DraftRankings",
+      jsonVariations: [draftRankingsData1, draftRankingsData2, draftRankingsData3],
+    });
+    genDraftRankings.generateInterfaces();
+  } catch (error) {
+    console.error("Error fetching draft rankings:", error);
+  }
+
+  // 47. /v1/meta
+  try {
+    const getMetaInfo = "https://api-web.nhle.com/v1/meta";
+
+    const metaInfoData = await getRequest(getMetaInfo);
+
+    const genMetaInfo = new Gen("IMetaInfoOutput", "./output/interfaces/meta", {
       backupOldFile: false,
       fileName: "MetaInfo",
-      jsonVariations: [metaInfoData1, metaInfoData2, metaInfoData3],
+      jsonVariations: [metaInfoData],
     });
-    iMetaInfoOutput.generateInterfaces();
+    genMetaInfo.generateInterfaces();
   } catch (error) {
-    console.error("Error fetching meta info data:", error);
+    console.error("Error fetching meta info:", error);
   }
 
+  // 48. /v1/meta/game/{game-id}
   try {
-    // Get Game Information
-    const gameInfoUrl1 = "https://api-web.nhle.com/v1/meta/game/2023020204";
-    const gameInfoData1 = await getRequest(gameInfoUrl1);
+    const getMetaGameInfo1 = "https://api-web.nhle.com/v1/meta/game/2023020204";
+    const getMetaGameInfo2 = "https://api-web.nhle.com/v1/meta/game/2023020205";
+    const getMetaGameInfo3 = "https://api-web.nhle.com/v1/meta/game/2023020206";
 
-    const gameInfoUrl2 = "https://api-web.nhle.com/v1/meta/game/2023020205";
-    const gameInfoData2 = await getRequest(gameInfoUrl2);
+    const metaGameInfoData1 = await getRequest(getMetaGameInfo1);
+    const metaGameInfoData2 = await getRequest(getMetaGameInfo2);
+    const metaGameInfoData3 = await getRequest(getMetaGameInfo3);
 
-    const gameInfoUrl3 = "https://api-web.nhle.com/v1/meta/game/2023020206";
-    const gameInfoData3 = await getRequest(gameInfoUrl3);
-
-    const iGameInfoOutput = new Gen("IGameInfoOutput", "./output/interfaces/gamecenter/game-info", {
+    const genMetaGameInfo = new Gen("IMetaGameInfoOutput", "./output/interfaces/meta/game", {
       backupOldFile: false,
-      fileName: "GameInfo",
-      jsonVariations: [gameInfoData1, gameInfoData2, gameInfoData3],
+      fileName: "MetaGameInfo",
+      jsonVariations: [metaGameInfoData1, metaGameInfoData2, metaGameInfoData3],
     });
-    iGameInfoOutput.generateInterfaces();
+    genMetaGameInfo.generateInterfaces();
   } catch (error) {
-    console.error("Error fetching game info data:", error);
+    console.error("Error fetching meta game info:", error);
   }
 
-  // NHL Stats API
-
+  // 49. /v1/location
   try {
-    // Get Player Information
-    const statsPlayerInfoUrl1 = "https://api.nhle.com/stats/rest/en/players";
-    const statsPlayerInfoData1 = await getRequest(statsPlayerInfoUrl1);
+    const getLocation = "https://api-web.nhle.com/v1/location";
 
-    const statsPlayerInfoUrl2 = "https://api.nhle.com/stats/rest/fr/players";
-    const statsPlayerInfoData2 = await getRequest(statsPlayerInfoUrl2);
+    const locationData = await getRequest(getLocation);
 
-    const statsPlayerInfoUrl3 = "https://api.nhle.com/stats/rest/es/players";
-    const statsPlayerInfoData3 = await getRequest(statsPlayerInfoUrl3);
-
-    const iStatsPlayerInfoOutput = new Gen("IStatsPlayerInfoOutput", "./output/interfaces/stats/players/info", {
+    const genLocation = new Gen("ILocationOutput", "./output/interfaces/location", {
       backupOldFile: false,
-      fileName: "StatsPlayerInfo",
-      jsonVariations: [statsPlayerInfoData1, statsPlayerInfoData2, statsPlayerInfoData3],
+      fileName: "Location",
+      jsonVariations: [locationData],
     });
-    iStatsPlayerInfoOutput.generateInterfaces();
+    genLocation.generateInterfaces();
   } catch (error) {
-    console.error("Error fetching stats player info:", error);
+    console.error("Error fetching location info:", error);
   }
 
+  // 50. /model/v1/openapi.json
   try {
-    // Get Skater Leaders
-    const statsSkaterLeadersUrl1 = "https://api.nhle.com/stats/rest/en/leaders/skaters/points";
-    const statsSkaterLeadersData1 = await getRequest(statsSkaterLeadersUrl1);
+    const getOpenApiSpec = "https://api-web.nhle.com/model/v1/openapi.json";
 
-    const statsSkaterLeadersUrl2 = "https://api.nhle.com/stats/rest/en/leaders/skaters/goals";
-    const statsSkaterLeadersData2 = await getRequest(statsSkaterLeadersUrl2);
+    const openApiSpecData = await getRequest(getOpenApiSpec);
 
-    const statsSkaterLeadersUrl3 = "https://api.nhle.com/stats/rest/en/leaders/skaters/assists";
-    const statsSkaterLeadersData3 = await getRequest(statsSkaterLeadersUrl3);
-
-    const iStatsSkaterLeadersOutput = new Gen("IStatsSkaterLeadersOutput", "./output/interfaces/stats/skaters/leaders", {
+    const genOpenApiSpec = new Gen("IOpenApiSpecOutput", "./output/interfaces/model/openapi", {
       backupOldFile: false,
-      fileName: "StatsSkaterLeaders",
-      jsonVariations: [statsSkaterLeadersData1, statsSkaterLeadersData2, statsSkaterLeadersData3],
+      fileName: "OpenApiSpec",
+      jsonVariations: [openApiSpecData],
     });
-    iStatsSkaterLeadersOutput.generateInterfaces();
+    genOpenApiSpec.generateInterfaces();
   } catch (error) {
-    console.error("Error fetching stats skater leaders:", error);
+    console.error("Error fetching OpenAPI specification:", error);
   }
 
+  // 51. /{lang}/players
   try {
-    // Get Skater Milestones
-    const statsSkaterMilestonesUrl1 = "https://api.nhle.com/stats/rest/en/milestones/skaters";
-    const statsSkaterMilestonesData1 = await getRequest(statsSkaterMilestonesUrl1);
+    const getPlayers1 = "https://api.nhle.com/stats/rest/en/players";
+    const getPlayers2 = "https://api.nhle.com/stats/rest/fr/players";
+    const getPlayers3 = "https://api.nhle.com/stats/rest/es/players";
 
-    const statsSkaterMilestonesUrl2 = "https://api.nhle.com/stats/rest/fr/milestones/skaters";
-    const statsSkaterMilestonesData2 = await getRequest(statsSkaterMilestonesUrl2);
+    const playersData1 = await getRequest(getPlayers1);
+    const playersData2 = await getRequest(getPlayers2);
+    const playersData3 = await getRequest(getPlayers3);
 
-    const statsSkaterMilestonesUrl3 = "https://api.nhle.com/stats/rest/es/milestones/skaters";
-    const statsSkaterMilestonesData3 = await getRequest(statsSkaterMilestonesUrl3);
-
-    const iStatsSkaterMilestonesOutput = new Gen("IStatsSkaterMilestonesOutput", "./output/interfaces/stats/skaters/milestones", {
+    const genPlayers = new Gen("IPlayersOutput", "./output/interfaces/stats/players", {
       backupOldFile: false,
-      fileName: "StatsSkaterMilestones",
-      jsonVariations: [statsSkaterMilestonesData1, statsSkaterMilestonesData2, statsSkaterMilestonesData3],
+      fileName: "Players",
+      jsonVariations: [playersData1, playersData2, playersData3],
     });
-    iStatsSkaterMilestonesOutput.generateInterfaces();
+    genPlayers.generateInterfaces();
   } catch (error) {
-    console.error("Error fetching stats skater milestones:", error);
+    console.error("Error fetching players:", error);
   }
 
+  // 52. /{lang}/leaders/skaters/{attribute}
   try {
-    // Get Skater Stats
-    const statsSkaterStatsUrl1 = "https://api.nhle.com/stats/rest/en/skater/summary?limit=72&start=17&sort=points&cayenneExp=seasonId=20232024";
-    const statsSkaterStatsData1 = await getRequest(statsSkaterStatsUrl1);
+    const getSkaterLeaders1 = "https://api.nhle.com/stats/rest/en/leaders/skaters/points";
+    const getSkaterLeaders2 = "https://api.nhle.com/stats/rest/fr/leaders/skaters/goals";
+    const getSkaterLeaders3 = "https://api.nhle.com/stats/rest/es/leaders/skaters/assists";
 
-    const statsSkaterStatsUrl2 = "https://api.nhle.com/stats/rest/en/skater/summary?limit=50&start=10&sort=goals&cayenneExp=seasonId=20222023";
-    const statsSkaterStatsData2 = await getRequest(statsSkaterStatsUrl2);
+    const skaterLeadersData1 = await getRequest(getSkaterLeaders1);
+    const skaterLeadersData2 = await getRequest(getSkaterLeaders2);
+    const skaterLeadersData3 = await getRequest(getSkaterLeaders3);
 
-    const statsSkaterStatsUrl3 = "https://api.nhle.com/stats/rest/en/skater/summary?limit=100&start=20&sort=assists&cayenneExp=seasonId=20212022";
-    const statsSkaterStatsData3 = await getRequest(statsSkaterStatsUrl3);
-
-    const iStatsSkaterStatsOutput = new Gen("IStatsSkaterStatsOutput", "./output/interfaces/stats/skaters/stats", {
+    const genSkaterLeaders = new Gen("ISkaterLeadersOutput", "./output/interfaces/stats/leaders/skaters", {
       backupOldFile: false,
-      fileName: "StatsSkaterStats",
-      jsonVariations: [statsSkaterStatsData1, statsSkaterStatsData2, statsSkaterStatsData3],
+      fileName: "SkaterLeaders",
+      jsonVariations: [skaterLeadersData1, skaterLeadersData2, skaterLeadersData3],
     });
-    iStatsSkaterStatsOutput.generateInterfaces();
+    genSkaterLeaders.generateInterfaces();
   } catch (error) {
-    console.error("Error fetching stats skater stats:", error);
+    console.error("Error fetching skater leaders:", error);
   }
 
+  // 53. /{lang}/milestones/skaters
   try {
-    // Get Goalie Leaders
-    const statsGoalieLeadersUrl1 = "https://api.nhle.com/stats/rest/en/leaders/goalies/gaa";
-    const statsGoalieLeadersData1 = await getRequest(statsGoalieLeadersUrl1);
+    const getSkaterMilestones1 = "https://api.nhle.com/stats/rest/en/milestones/skaters";
+    const getSkaterMilestones2 = "https://api.nhle.com/stats/rest/fr/milestones/skaters";
+    const getSkaterMilestones3 = "https://api.nhle.com/stats/rest/es/milestones/skaters";
 
-    const statsGoalieLeadersUrl2 = "https://api.nhle.com/stats/rest/en/leaders/goalies/save-percentage";
-    const statsGoalieLeadersData2 = await getRequest(statsGoalieLeadersUrl2);
+    const skaterMilestonesData1 = await getRequest(getSkaterMilestones1);
+    const skaterMilestonesData2 = await getRequest(getSkaterMilestones2);
+    const skaterMilestonesData3 = await getRequest(getSkaterMilestones3);
 
-    const statsGoalieLeadersUrl3 = "https://api.nhle.com/stats/rest/en/leaders/goalies/wins";
-    const statsGoalieLeadersData3 = await getRequest(statsGoalieLeadersUrl3);
-
-    const iStatsGoalieLeadersOutput = new Gen("IStatsGoalieLeadersOutput", "./output/interfaces/stats/goalies/leaders", {
+    const genSkaterMilestones = new Gen("ISkaterMilestonesOutput", "./output/interfaces/stats/milestones/skaters", {
       backupOldFile: false,
-      fileName: "StatsGoalieLeaders",
-      jsonVariations: [statsGoalieLeadersData1, statsGoalieLeadersData2, statsGoalieLeadersData3],
+      fileName: "SkaterMilestones",
+      jsonVariations: [skaterMilestonesData1, skaterMilestonesData2, skaterMilestonesData3],
     });
-    iStatsGoalieLeadersOutput.generateInterfaces();
+    genSkaterMilestones.generateInterfaces();
   } catch (error) {
-    console.error("Error fetching stats goalie leaders:", error);
+    console.error("Error fetching skater milestones:", error);
   }
 
+  // 54. /{lang}/skater
   try {
-    // Get Goalie Stats
-    const statsGoalieStatsUrl1 = "https://api.nhle.com/stats/rest/en/goalie/summary?limit=72&start=15&sort=wins&cayenneExp=seasonId=20232024";
-    const statsGoalieStatsData1 = await getRequest(statsGoalieStatsUrl1);
+    const getSkaterInfo1 = "https://api.nhle.com/stats/rest/en/skater";
+    const getSkaterInfo2 = "https://api.nhle.com/stats/rest/fr/skater";
+    const getSkaterInfo3 = "https://api.nhle.com/stats/rest/es/skater";
 
-    const statsGoalieStatsUrl2 = "https://api.nhle.com/stats/rest/en/goalie/summary?limit=50&start=10&sort=gaa&cayenneExp=seasonId=20222023";
-    const statsGoalieStatsData2 = await getRequest(statsGoalieStatsUrl2);
+    const skaterInfoData1 = await getRequest(getSkaterInfo1);
+    const skaterInfoData2 = await getRequest(getSkaterInfo2);
+    const skaterInfoData3 = await getRequest(getSkaterInfo3);
 
-    const statsGoalieStatsUrl3 =
-      "https://api.nhle.com/stats/rest/en/goalie/summary?limit=100&start=20&sort=save-percentage&cayenneExp=seasonId=20212022";
-    const statsGoalieStatsData3 = await getRequest(statsGoalieStatsUrl3);
-
-    const iStatsGoalieStatsOutput = new Gen("IStatsGoalieStatsOutput", "./output/interfaces/stats/goalies/stats", {
+    const genSkaterInfo = new Gen("ISkaterInfoOutput", "./output/interfaces/stats/skater", {
       backupOldFile: false,
-      fileName: "StatsGoalieStats",
-      jsonVariations: [statsGoalieStatsData1, statsGoalieStatsData2, statsGoalieStatsData3],
+      fileName: "SkaterInfo",
+      jsonVariations: [skaterInfoData1, skaterInfoData2, skaterInfoData3],
     });
-    iStatsGoalieStatsOutput.generateInterfaces();
+    genSkaterInfo.generateInterfaces();
   } catch (error) {
-    console.error("Error fetching stats goalie stats:", error);
+    console.error("Error fetching skater info:", error);
   }
 
+  // 55. /{lang}/skater/{report}
   try {
-    // Get Draft Information
-    const statsDraftInfoUrl1 = "https://api.nhle.com/stats/rest/en/draft";
-    const statsDraftInfoData1 = await getRequest(statsDraftInfoUrl1);
+    const getSkaterStats1 = "https://api.nhle.com/stats/rest/en/skater/summary?limit=72&start=17&sort=points&cayenneExp=seasonId=20232024";
+    const getSkaterStats2 = "https://api.nhle.com/stats/rest/fr/skater/summary?limit=100&start=10&sort=goals&cayenneExp=seasonId=20222023";
+    const getSkaterStats3 = "https://api.nhle.com/stats/rest/es/skater/summary?limit=50&start=5&sort=assists&cayenneExp=seasonId=20212022";
 
-    const statsDraftInfoUrl2 = "https://api.nhle.com/stats/rest/fr/draft";
-    const statsDraftInfoData2 = await getRequest(statsDraftInfoUrl2);
+    const skaterStatsData1 = await getRequest(getSkaterStats1);
+    const skaterStatsData2 = await getRequest(getSkaterStats2);
+    const skaterStatsData3 = await getRequest(getSkaterStats3);
 
-    const statsDraftInfoUrl3 = "https://api.nhle.com/stats/rest/es/draft";
-    const statsDraftInfoData3 = await getRequest(statsDraftInfoUrl3);
-
-    const iStatsDraftInfoOutput = new Gen("IStatsDraftInfoOutput", "./output/interfaces/stats/draft", {
+    const genSkaterStats = new Gen("ISkaterStatsOutput", "./output/interfaces/stats/skater", {
       backupOldFile: false,
-      fileName: "StatsDraftInfo",
-      jsonVariations: [statsDraftInfoData1, statsDraftInfoData2, statsDraftInfoData3],
+      fileName: "SkaterStats",
+      jsonVariations: [skaterStatsData1, skaterStatsData2, skaterStatsData3],
     });
-    iStatsDraftInfoOutput.generateInterfaces();
+    genSkaterStats.generateInterfaces();
   } catch (error) {
-    console.error("Error fetching stats draft info:", error);
+    console.error("Error fetching skater stats:", error);
   }
 
+  // 56. /{lang}/leaders/goalies/{attribute}
   try {
-    // Get Team Information
-    const statsTeamInfoUrl1 = "https://api.nhle.com/stats/rest/en/team";
-    const statsTeamInfoData1 = await getRequest(statsTeamInfoUrl1);
+    const getGoalieLeaders1 = "https://api.nhle.com/stats/rest/en/leaders/goalies/wins";
+    const getGoalieLeaders2 = "https://api.nhle.com/stats/rest/fr/leaders/goalies/gaa";
+    const getGoalieLeaders3 = "https://api.nhle.com/stats/rest/es/leaders/goalies/save-percentage";
 
-    const statsTeamInfoUrl2 = "https://api.nhle.com/stats/rest/fr/team";
-    const statsTeamInfoData2 = await getRequest(statsTeamInfoUrl2);
+    const goalieLeadersData1 = await getRequest(getGoalieLeaders1);
+    const goalieLeadersData2 = await getRequest(getGoalieLeaders2);
+    const goalieLeadersData3 = await getRequest(getGoalieLeaders3);
 
-    const statsTeamInfoUrl3 = "https://api.nhle.com/stats/rest/es/team";
-    const statsTeamInfoData3 = await getRequest(statsTeamInfoUrl3);
-
-    const iStatsTeamInfoOutput = new Gen("IStatsTeamInfoOutput", "./output/interfaces/stats/team/info", {
+    const genGoalieLeaders = new Gen("IGoalieLeadersOutput", "./output/interfaces/stats/leaders/goalies", {
       backupOldFile: false,
-      fileName: "StatsTeamInfo",
-      jsonVariations: [statsTeamInfoData1, statsTeamInfoData2, statsTeamInfoData3],
+      fileName: "GoalieLeaders",
+      jsonVariations: [goalieLeadersData1, goalieLeadersData2, goalieLeadersData3],
     });
-    iStatsTeamInfoOutput.generateInterfaces();
+    genGoalieLeaders.generateInterfaces();
   } catch (error) {
-    console.error("Error fetching stats team info:", error);
+    console.error("Error fetching goalie leaders:", error);
   }
 
+  // 57. /{lang}/goalie/{report}
   try {
-    // Get Team Stats
-    const statsTeamStatsUrl1 =
-      "https://api.nhle.com/stats/rest/en/team/summary?sort=shotsForPerGame&cayenneExp=seasonId=20232024%20and%20gameTypeId=2";
-    const statsTeamStatsData1 = await getRequest(statsTeamStatsUrl1);
+    const getGoalieStats1 = "https://api.nhle.com/stats/rest/en/goalie/summary?limit=72&start=15&sort=wins&cayenneExp=seasonId=20232024";
+    const getGoalieStats2 = "https://api.nhle.com/stats/rest/fr/goalie/summary?limit=50&start=10&sort=gaa&cayenneExp=seasonId=20222023";
+    const getGoalieStats3 = "https://api.nhle.com/stats/rest/es/goalie/summary?limit=100&start=5&sort=save-percentage&cayenneExp=seasonId=20212022";
 
-    const statsTeamStatsUrl2 =
-      "https://api.nhle.com/stats/rest/en/team/summary?sort=goalsForPerGame&cayenneExp=seasonId=20222023%20and%20gameTypeId=2";
-    const statsTeamStatsData2 = await getRequest(statsTeamStatsUrl2);
+    const goalieStatsData1 = await getRequest(getGoalieStats1);
+    const goalieStatsData2 = await getRequest(getGoalieStats2);
+    const goalieStatsData3 = await getRequest(getGoalieStats3);
 
-    const statsTeamStatsUrl3 =
-      "https://api.nhle.com/stats/rest/en/team/summary?sort=shotsAgainstPerGame&cayenneExp=seasonId=20212022%20and%20gameTypeId=3";
-    const statsTeamStatsData3 = await getRequest(statsTeamStatsUrl3);
-
-    const iStatsTeamStatsOutput = new Gen("IStatsTeamStatsOutput", "./output/interfaces/stats/team/stats", {
+    const genGoalieStats = new Gen("IGoalieStatsOutput", "./output/interfaces/stats/goalie", {
       backupOldFile: false,
-      fileName: "StatsTeamStats",
-      jsonVariations: [statsTeamStatsData1, statsTeamStatsData2, statsTeamStatsData3],
+      fileName: "GoalieStats",
+      jsonVariations: [goalieStatsData1, goalieStatsData2, goalieStatsData3],
     });
-    iStatsTeamStatsOutput.generateInterfaces();
+    genGoalieStats.generateInterfaces();
   } catch (error) {
-    console.error("Error fetching stats team stats:", error);
+    console.error("Error fetching goalie stats:", error);
   }
 
+  // 58. /{lang}/milestones/goalies
   try {
-    // Get Season Information
-    const statsSeasonInfoUrl1 = "https://api.nhle.com/stats/rest/en/season";
-    const statsSeasonInfoData1 = await getRequest(statsSeasonInfoUrl1);
+    const getGoalieMilestones1 = "https://api.nhle.com/stats/rest/en/milestones/goalies";
+    const getGoalieMilestones2 = "https://api.nhle.com/stats/rest/fr/milestones/goalies";
+    const getGoalieMilestones3 = "https://api.nhle.com/stats/rest/es/milestones/goalies";
 
-    const statsSeasonInfoUrl2 = "https://api.nhle.com/stats/rest/fr/season";
-    const statsSeasonInfoData2 = await getRequest(statsSeasonInfoUrl2);
+    const goalieMilestonesData1 = await getRequest(getGoalieMilestones1);
+    const goalieMilestonesData2 = await getRequest(getGoalieMilestones2);
+    const goalieMilestonesData3 = await getRequest(getGoalieMilestones3);
 
-    const statsSeasonInfoUrl3 = "https://api.nhle.com/stats/rest/es/season";
-    const statsSeasonInfoData3 = await getRequest(statsSeasonInfoUrl3);
-
-    const iStatsSeasonInfoOutput = new Gen("IStatsSeasonInfoOutput", "./output/interfaces/stats/season/info", {
+    const genGoalieMilestones = new Gen("IGoalieMilestonesOutput", "./output/interfaces/stats/milestones/goalies", {
       backupOldFile: false,
-      fileName: "StatsSeasonInfo",
-      jsonVariations: [statsSeasonInfoData1, statsSeasonInfoData2, statsSeasonInfoData3],
+      fileName: "GoalieMilestones",
+      jsonVariations: [goalieMilestonesData1, goalieMilestonesData2, goalieMilestonesData3],
     });
-    iStatsSeasonInfoOutput.generateInterfaces();
+    genGoalieMilestones.generateInterfaces();
   } catch (error) {
-    console.error("Error fetching stats season info:", error);
+    console.error("Error fetching goalie milestones:", error);
   }
 
+  // 59. /{lang}/draft
   try {
-    // Get Game Information
-    const statsGameInfoUrl1 = "https://api.nhle.com/stats/rest/en/game";
-    const statsGameInfoData1 = await getRequest(statsGameInfoUrl1);
+    const getDraftInfo1 = "https://api.nhle.com/stats/rest/en/draft";
+    const getDraftInfo2 = "https://api.nhle.com/stats/rest/fr/draft";
+    const getDraftInfo3 = "https://api.nhle.com/stats/rest/es/draft";
 
-    const statsGameInfoUrl2 = "https://api.nhle.com/stats/rest/fr/game";
-    const statsGameInfoData2 = await getRequest(statsGameInfoUrl2);
+    const draftInfoData1 = await getRequest(getDraftInfo1);
+    const draftInfoData2 = await getRequest(getDraftInfo2);
+    const draftInfoData3 = await getRequest(getDraftInfo3);
 
-    const statsGameInfoUrl3 = "https://api.nhle.com/stats/rest/es/game";
-    const statsGameInfoData3 = await getRequest(statsGameInfoUrl3);
-
-    const iStatsGameInfoOutput = new Gen("IStatsGameInfoOutput", "./output/interfaces/stats/game/info", {
+    const genDraftInfo = new Gen("IDraftInfoOutput", "./output/interfaces/draft", {
       backupOldFile: false,
-      fileName: "StatsGameInfo",
-      jsonVariations: [statsGameInfoData1, statsGameInfoData2, statsGameInfoData3],
+      fileName: "DraftInfo",
+      jsonVariations: [draftInfoData1, draftInfoData2, draftInfoData3],
     });
-    iStatsGameInfoOutput.generateInterfaces();
+    genDraftInfo.generateInterfaces();
   } catch (error) {
-    console.error("Error fetching stats game info:", error);
+    console.error("Error fetching draft info:", error);
   }
 
+  // 60. /{lang}/team
   try {
-    // Ping the Server
-    const statsPingUrl = "https://api.nhle.com/stats/rest/ping";
-    const statsPingData = await getRequest(statsPingUrl);
+    const getTeams1 = "https://api.nhle.com/stats/rest/en/team";
+    const getTeams2 = "https://api.nhle.com/stats/rest/fr/team";
+    const getTeams3 = "https://api.nhle.com/stats/rest/es/team";
 
-    const iStatsPingOutput = new Gen("IStatsPingOutput", "./output/interfaces/stats/server/ping", {
+    const teamsData1 = await getRequest(getTeams1);
+    const teamsData2 = await getRequest(getTeams2);
+    const teamsData3 = await getRequest(getTeams3);
+
+    const genTeams = new Gen("ITeamsOutput", "./output/interfaces/stats/teams", {
       backupOldFile: false,
-      fileName: "StatsPing",
-      jsonVariations: [statsPingData],
+      fileName: "Teams",
+      jsonVariations: [teamsData1, teamsData2, teamsData3],
     });
-    iStatsPingOutput.generateInterfaces();
+    genTeams.generateInterfaces();
+  } catch (error) {
+    console.error("Error fetching teams:", error);
+  }
+
+  // 61. /{lang}/team/{report}
+  try {
+    const getTeamStats1 = "https://api.nhle.com/stats/rest/en/team/summary?sort=shotsForPerGame&cayenneExp=seasonId=20232024%20and%20gameTypeId=2";
+    const getTeamStats2 = "https://api.nhle.com/stats/rest/fr/team/summary?sort=goalsFor&cayenneExp=seasonId=20222023%20and%20gameTypeId=2";
+    const getTeamStats3 = "https://api.nhle.com/stats/rest/es/team/summary?sort=assistsFor&cayenneExp=seasonId=20212022%20and%20gameTypeId=2";
+
+    const teamStatsData1 = await getRequest(getTeamStats1);
+    const teamStatsData2 = await getRequest(getTeamStats2);
+    const teamStatsData3 = await getRequest(getTeamStats3);
+
+    const genTeamStats = new Gen("ITeamStatsOutput", "./output/interfaces/stats/team", {
+      backupOldFile: false,
+      fileName: "TeamStats",
+      jsonVariations: [teamStatsData1, teamStatsData2, teamStatsData3],
+    });
+    genTeamStats.generateInterfaces();
+  } catch (error) {
+    console.error("Error fetching team stats:", error);
+  }
+
+  // 62. /{lang}/franchise
+  try {
+    const getFranchises1 = "https://api.nhle.com/stats/rest/en/franchise";
+    const getFranchises2 = "https://api.nhle.com/stats/rest/fr/franchise";
+    const getFranchises3 = "https://api.nhle.com/stats/rest/es/franchise";
+
+    const franchisesData1 = await getRequest(getFranchises1);
+    const franchisesData2 = await getRequest(getFranchises2);
+    const franchisesData3 = await getRequest(getFranchises3);
+
+    const genFranchises = new Gen("IFranchisesOutput", "./output/interfaces/stats/franchise", {
+      backupOldFile: false,
+      fileName: "Franchises",
+      jsonVariations: [franchisesData1, franchisesData2, franchisesData3],
+    });
+    genFranchises.generateInterfaces();
+  } catch (error) {
+    console.error("Error fetching franchise info:", error);
+  }
+
+  // 63. /{lang}/componentSeason
+  try {
+    const getComponentSeason1 = "https://api.nhle.com/stats/rest/en/componentSeason";
+    const getComponentSeason2 = "https://api.nhle.com/stats/rest/fr/componentSeason";
+    const getComponentSeason3 = "https://api.nhle.com/stats/rest/es/componentSeason";
+
+    const componentSeasonData1 = await getRequest(getComponentSeason1);
+    const componentSeasonData2 = await getRequest(getComponentSeason2);
+    const componentSeasonData3 = await getRequest(getComponentSeason3);
+
+    const genComponentSeason = new Gen("IComponentSeasonOutput", "./output/interfaces/stats/component-season", {
+      backupOldFile: false,
+      fileName: "ComponentSeason",
+      jsonVariations: [componentSeasonData1, componentSeasonData2, componentSeasonData3],
+    });
+    genComponentSeason.generateInterfaces();
+  } catch (error) {
+    console.error("Error fetching component season info:", error);
+  }
+
+  // 64. /{lang}/season
+  try {
+    const getSeason1 = "https://api.nhle.com/stats/rest/en/season";
+    const getSeason2 = "https://api.nhle.com/stats/rest/fr/season";
+    const getSeason3 = "https://api.nhle.com/stats/rest/es/season";
+
+    const seasonData1 = await getRequest(getSeason1);
+    const seasonData2 = await getRequest(getSeason2);
+    const seasonData3 = await getRequest(getSeason3);
+
+    const genSeason = new Gen("ISeasonOutput", "./output/interfaces/stats/season", {
+      backupOldFile: false,
+      fileName: "Season",
+      jsonVariations: [seasonData1, seasonData2, seasonData3],
+    });
+    genSeason.generateInterfaces();
+  } catch (error) {
+    console.error("Error fetching season info:", error);
+  }
+
+  // 65. /{lang}/game
+  try {
+    const getGame1 = "https://api.nhle.com/stats/rest/en/game";
+    const getGame2 = "https://api.nhle.com/stats/rest/fr/game";
+    const getGame3 = "https://api.nhle.com/stats/rest/es/game";
+
+    const gameData1 = await getRequest(getGame1);
+    const gameData2 = await getRequest(getGame2);
+    const gameData3 = await getRequest(getGame3);
+
+    const genGame = new Gen("IGameOutput", "./output/interfaces/stats/game", {
+      backupOldFile: false,
+      fileName: "Game",
+      jsonVariations: [gameData1, gameData2, gameData3],
+    });
+    genGame.generateInterfaces();
+  } catch (error) {
+    console.error("Error fetching game info:", error);
+  }
+
+  // 66. /{lang}/game/meta
+  try {
+    const getGameMeta1 = "https://api.nhle.com/stats/rest/en/game/meta";
+    const getGameMeta2 = "https://api.nhle.com/stats/rest/fr/game/meta";
+    const getGameMeta3 = "https://api.nhle.com/stats/rest/es/game/meta";
+
+    const gameMetaData1 = await getRequest(getGameMeta1);
+    const gameMetaData2 = await getRequest(getGameMeta2);
+    const gameMetaData3 = await getRequest(getGameMeta3);
+
+    const genGameMeta = new Gen("IGameMetaOutput", "./output/interfaces/stats/game/meta", {
+      backupOldFile: false,
+      fileName: "GameMeta",
+      jsonVariations: [gameMetaData1, gameMetaData2, gameMetaData3],
+    });
+    genGameMeta.generateInterfaces();
+  } catch (error) {
+    console.error("Error fetching game meta data:", error);
+  }
+
+  // 67. /{lang}/config
+  try {
+    const getConfig1 = "https://api.nhle.com/stats/rest/en/config";
+    const getConfig2 = "https://api.nhle.com/stats/rest/fr/config";
+    const getConfig3 = "https://api.nhle.com/stats/rest/es/config";
+
+    const configData1 = await getRequest(getConfig1);
+    const configData2 = await getRequest(getConfig2);
+    const configData3 = await getRequest(getConfig3);
+
+    const genConfig = new Gen("IConfigOutput", "./output/interfaces/stats/config", {
+      backupOldFile: false,
+      fileName: "Config",
+      jsonVariations: [configData1, configData2, configData3],
+    });
+    genConfig.generateInterfaces();
+  } catch (error) {
+    console.error("Error fetching config data:", error);
+  }
+
+  // 68. /ping
+  try {
+    const pingServer = "https://api.nhle.com/stats/rest/ping";
+
+    const pingServerData = await getRequest(pingServer);
+
+    const genPingServer = new Gen("IPingServerOutput", "./output/interfaces/ping", {
+      backupOldFile: false,
+      fileName: "PingServer",
+      jsonVariations: [pingServerData],
+    });
+    genPingServer.generateInterfaces();
   } catch (error) {
     console.error("Error pinging server:", error);
   }
 
+  // 69. /{lang}/country
   try {
-    // Get Country Information
-    const statsCountryInfoUrl1 = "https://api.nhle.com/stats/rest/en/country";
-    const statsCountryInfoData1 = await getRequest(statsCountryInfoUrl1);
+    const getCountry1 = "https://api.nhle.com/stats/rest/en/country";
+    const getCountry2 = "https://api.nhle.com/stats/rest/fr/country";
+    const getCountry3 = "https://api.nhle.com/stats/rest/es/country";
 
-    const statsCountryInfoUrl2 = "https://api.nhle.com/stats/rest/fr/country";
-    const statsCountryInfoData2 = await getRequest(statsCountryInfoUrl2);
+    const countryData1 = await getRequest(getCountry1);
+    const countryData2 = await getRequest(getCountry2);
+    const countryData3 = await getRequest(getCountry3);
 
-    const statsCountryInfoUrl3 = "https://api.nhle.com/stats/rest/es/country";
-    const statsCountryInfoData3 = await getRequest(statsCountryInfoUrl3);
-
-    const iStatsCountryInfoOutput = new Gen("IStatsCountryInfoOutput", "./output/interfaces/stats/country/info", {
+    const genCountry = new Gen("ICountryOutput", "./output/interfaces/stats/country", {
       backupOldFile: false,
-      fileName: "StatsCountryInfo",
-      jsonVariations: [statsCountryInfoData1, statsCountryInfoData2, statsCountryInfoData3],
+      fileName: "Country",
+      jsonVariations: [countryData1, countryData2, countryData3],
     });
-    iStatsCountryInfoOutput.generateInterfaces();
+    genCountry.generateInterfaces();
   } catch (error) {
-    console.error("Error fetching stats country info:", error);
+    console.error("Error fetching country data:", error);
   }
 
+  // 70. /{lang}/shiftcharts?cayenneExp=gameId={game_id}
   try {
-    // Get Shift Charts
-    const statsShiftChartsUrl1 = "https://api.nhle.com/stats/rest/en/shiftcharts?cayenneExp=gameId=2021020001";
-    const statsShiftChartsData1 = await getRequest(statsShiftChartsUrl1);
+    const getShiftCharts1 = "https://api.nhle.com/stats/rest/en/shiftcharts?cayenneExp=gameId=2021020001";
+    const getShiftCharts2 = "https://api.nhle.com/stats/rest/fr/shiftcharts?cayenneExp=gameId=2021020002";
+    const getShiftCharts3 = "https://api.nhle.com/stats/rest/es/shiftcharts?cayenneExp=gameId=2021020003";
 
-    const statsShiftChartsUrl2 = "https://api.nhle.com/stats/rest/en/shiftcharts?cayenneExp=gameId=2021020002";
-    const statsShiftChartsData2 = await getRequest(statsShiftChartsUrl2);
+    const shiftChartsData1 = await getRequest(getShiftCharts1);
+    const shiftChartsData2 = await getRequest(getShiftCharts2);
+    const shiftChartsData3 = await getRequest(getShiftCharts3);
 
-    const statsShiftChartsUrl3 = "https://api.nhle.com/stats/rest/en/shiftcharts?cayenneExp=gameId=2021020003";
-    const statsShiftChartsData3 = await getRequest(statsShiftChartsUrl3);
-
-    const iStatsShiftChartsOutput = new Gen("IStatsShiftChartsOutput", "./output/interfaces/stats/game/shiftcharts", {
+    const genShiftCharts = new Gen("IShiftChartsOutput", "./output/interfaces/stats/shiftcharts", {
       backupOldFile: false,
-      fileName: "StatsShiftCharts",
-      jsonVariations: [statsShiftChartsData1, statsShiftChartsData2, statsShiftChartsData3],
+      fileName: "ShiftCharts",
+      jsonVariations: [shiftChartsData1, shiftChartsData2, shiftChartsData3],
     });
-    iStatsShiftChartsOutput.generateInterfaces();
+    genShiftCharts.generateInterfaces();
   } catch (error) {
-    console.error("Error fetching stats shift charts:", error);
+    console.error("Error fetching shift charts:", error);
   }
 
+  // 71. /{lang}/glossary
   try {
-    // Get Glossary
-    const statsGlossaryUrl1 = "https://api.nhle.com/stats/rest/en/glossary";
-    const statsGlossaryData1 = await getRequest(statsGlossaryUrl1);
+    const getGlossary1 = "https://api.nhle.com/stats/rest/en/glossary";
+    const getGlossary2 = "https://api.nhle.com/stats/rest/fr/glossary";
+    const getGlossary3 = "https://api.nhle.com/stats/rest/es/glossary";
 
-    const statsGlossaryUrl2 = "https://api.nhle.com/stats/rest/fr/glossary";
-    const statsGlossaryData2 = await getRequest(statsGlossaryUrl2);
+    const glossaryData1 = await getRequest(getGlossary1);
+    const glossaryData2 = await getRequest(getGlossary2);
+    const glossaryData3 = await getRequest(getGlossary3);
 
-    const statsGlossaryUrl3 = "https://api.nhle.com/stats/rest/es/glossary";
-    const statsGlossaryData3 = await getRequest(statsGlossaryUrl3);
-
-    const iStatsGlossaryOutput = new Gen("IStatsGlossaryOutput", "./output/interfaces/stats/glossary", {
+    const genGlossary = new Gen("IGlossaryOutput", "./output/interfaces/stats/glossary", {
       backupOldFile: false,
-      fileName: "StatsGlossary",
-      jsonVariations: [statsGlossaryData1, statsGlossaryData2, statsGlossaryData3],
+      fileName: "Glossary",
+      jsonVariations: [glossaryData1, glossaryData2, glossaryData3],
     });
-    iStatsGlossaryOutput.generateInterfaces();
+    genGlossary.generateInterfaces();
   } catch (error) {
-    console.error("Error fetching stats glossary:", error);
+    console.error("Error fetching glossary data:", error);
   }
 
+  // 72. /{lang}/content/module
   try {
-    // Get Content Module
-    const statsContentModuleUrl1 = "https://api.nhle.com/stats/rest/en/content/module";
-    const statsContentModuleData1 = await getRequest(statsContentModuleUrl1);
+    const getContentModule1 = "https://api.nhle.com/stats/rest/en/content/module";
+    const getContentModule2 = "https://api.nhle.com/stats/rest/fr/content/module";
+    const getContentModule3 = "https://api.nhle.com/stats/rest/es/content/module";
 
-    const statsContentModuleUrl2 = "https://api.nhle.com/stats/rest/fr/content/module";
-    const statsContentModuleData2 = await getRequest(statsContentModuleUrl2);
+    const contentModuleData1 = await getRequest(getContentModule1);
+    const contentModuleData2 = await getRequest(getContentModule2);
+    const contentModuleData3 = await getRequest(getContentModule3);
 
-    const statsContentModuleUrl3 = "https://api.nhle.com/stats/rest/es/content/module";
-    const statsContentModuleData3 = await getRequest(statsContentModuleUrl3);
-
-    const iStatsContentModuleOutput = new Gen("IStatsContentModuleOutput", "./output/interfaces/stats/content/module", {
+    const genContentModule = new Gen("IContentModuleOutput", "./output/interfaces/stats/content/module", {
       backupOldFile: false,
-      fileName: "StatsContentModule",
-      jsonVariations: [statsContentModuleData1, statsContentModuleData2, statsContentModuleData3],
+      fileName: "ContentModule",
+      jsonVariations: [contentModuleData1, contentModuleData2, contentModuleData3],
     });
-    iStatsContentModuleOutput.generateInterfaces();
+    genContentModule.generateInterfaces();
   } catch (error) {
-    console.error("Error fetching stats content module:", error);
+    console.error("Error fetching content module data:", error);
   }
 
+  // 73. /content/module/meta
   try {
-    // Get Metadata for Content Module
-    const statsContentModuleMetaUrl = "https://api.nhle.com/stats/rest/content/module/meta";
-    const statsContentModuleMetaData = await getRequest(statsContentModuleMetaUrl);
+    const getContentModuleMeta = "https://api.nhle.com/stats/rest/content/module/meta";
 
-    const iStatsContentModuleMetaOutput = new Gen("IStatsContentModuleMetaOutput", "./output/interfaces/stats/content/module/meta", {
+    const contentModuleMetaData = await getRequest(getContentModuleMeta);
+
+    const genContentModuleMeta = new Gen("IContentModuleMetaOutput", "./output/interfaces/stats/content/module", {
       backupOldFile: false,
-      fileName: "StatsContentModuleMeta",
-      jsonVariations: [statsContentModuleMetaData],
+      fileName: "ContentModuleMeta",
+      jsonVariations: [contentModuleMetaData],
     });
-    iStatsContentModuleMetaOutput.generateInterfaces();
+    genContentModuleMeta.generateInterfaces();
   } catch (error) {
-    console.error("Error fetching stats content module metadata:", error);
+    console.error("Error fetching content module meta data:", error);
   }
 }
 
