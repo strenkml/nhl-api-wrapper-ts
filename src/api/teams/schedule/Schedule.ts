@@ -1,17 +1,9 @@
-import {
-  ICurrentTeamScheduleInput,
-  ICurrentTeamScheduleMonthInput,
-  ICurrentTeamScheduleMonthOutput,
-  ICurrentTeamScheduleOutput,
-  ICurrentTeamScheduleWeekInput,
-  ICurrentTeamScheduleWeekOutput,
-  ITeamScheduleMonthInput,
-  ITeamScheduleMonthOutput,
-  ITeamScheduleSeasonInput,
-  ITeamScheduleSeasonOutput,
-  ITeamScheduleWeekInput,
-  ITeamScheduleWeekOutput,
-} from "../../../interfaces/Teams";
+import { IClubScheduleInput, IClubScheduleOutput } from "../../../interfaces/club/schedule/ClubSchedule";
+import { IClubScheduleMonthInput, IClubScheduleMonthOutput } from "../../../interfaces/club/schedule/ClubScheduleMonth";
+import { IClubScheduleMonthNowInput, IClubScheduleMonthNowOutput } from "../../../interfaces/club/schedule/ClubScheduleMonthNow";
+import { IClubScheduleNowInput, IClubScheduleNowOutput } from "../../../interfaces/club/schedule/ClubScheduleNow";
+import { IClubScheduleWeekInput, IClubScheduleWeekOutput } from "../../../interfaces/club/schedule/ClubScheduleWeek";
+import { IClubScheduleWeekNowInput, IClubScheduleWeekNowOutput } from "../../../interfaces/club/schedule/ClubScheduleWeekNow";
 import { BASE_URL, IResponse, sendGetRequest } from "../../../internal/Requests";
 
 /**
@@ -19,8 +11,8 @@ import { BASE_URL, IResponse, sendGetRequest } from "../../../internal/Requests"
  * @param options The team to retrieve the schedule for.
  * @returns The current team schedule.
  */
-export async function getCurrentTeamSchedule(options: ICurrentTeamScheduleInput): Promise<IResponse<ICurrentTeamScheduleOutput>> {
-  return await sendGetRequest<ICurrentTeamScheduleOutput>(BASE_URL.NORMAL, "club-schedule-season/{team}/now", options);
+export async function getCurrentTeamSchedule(options: IClubScheduleNowInput): Promise<IResponse<IClubScheduleNowOutput>> {
+  return await sendGetRequest<IClubScheduleNowOutput>(BASE_URL.NORMAL, "club-schedule-season/{team}/now", options);
 }
 
 /**
@@ -28,8 +20,8 @@ export async function getCurrentTeamSchedule(options: ICurrentTeamScheduleInput)
  * @param options The team and season to retrieve the schedule for.
  * @returns The team schedule for the team and season.
  */
-export async function getTeamScheduleSeason(options: ITeamScheduleSeasonInput): Promise<IResponse<ITeamScheduleSeasonOutput>> {
-  return await sendGetRequest<ITeamScheduleSeasonOutput>(BASE_URL.NORMAL, "club-schedule-season/{team}/{season}", options);
+export async function getTeamScheduleSeason(options: IClubScheduleInput): Promise<IResponse<IClubScheduleOutput>> {
+  return await sendGetRequest<IClubScheduleOutput>(BASE_URL.NORMAL, "club-schedule-season/{team}/{season}", options);
 }
 
 /**
@@ -37,8 +29,8 @@ export async function getTeamScheduleSeason(options: ITeamScheduleSeasonInput): 
  * @param options The team to retrieve the schedule for.
  * @returns The current team schedule for the month.
  */
-export async function getCurrentTeamScheduleMonth(options: ICurrentTeamScheduleMonthInput): Promise<IResponse<ICurrentTeamScheduleMonthOutput>> {
-  return await sendGetRequest<ICurrentTeamScheduleMonthOutput>(BASE_URL.NORMAL, "club-schedule/{team}/month/now", options);
+export async function getCurrentTeamScheduleMonth(options: IClubScheduleMonthNowInput): Promise<IResponse<IClubScheduleMonthNowOutput>> {
+  return await sendGetRequest<IClubScheduleMonthNowOutput>(BASE_URL.NORMAL, "club-schedule/{team}/month/now", options);
 }
 
 /**
@@ -46,8 +38,8 @@ export async function getCurrentTeamScheduleMonth(options: ICurrentTeamScheduleM
  * @param options The team and month to retrieve the schedule for.
  * @returns The team schedule for the team and month.
  */
-export async function getTeamScheduleMonth(options: ITeamScheduleMonthInput): Promise<IResponse<ITeamScheduleMonthOutput>> {
-  return await sendGetRequest<ITeamScheduleMonthOutput>(BASE_URL.NORMAL, "club-schedule/{team}/month/{month}", options);
+export async function getTeamScheduleMonth(options: IClubScheduleMonthInput): Promise<IResponse<IClubScheduleMonthOutput>> {
+  return await sendGetRequest<IClubScheduleMonthOutput>(BASE_URL.NORMAL, "club-schedule/{team}/month/{month}", options);
 }
 
 /**
@@ -55,8 +47,8 @@ export async function getTeamScheduleMonth(options: ITeamScheduleMonthInput): Pr
  * @param options The team to retrieve the schedule for.
  * @returns The current team schedule for the week.
  */
-export async function getCurrentTeamScheduleWeek(options: ICurrentTeamScheduleWeekInput): Promise<IResponse<ICurrentTeamScheduleWeekOutput>> {
-  return await sendGetRequest<ICurrentTeamScheduleWeekOutput>(BASE_URL.NORMAL, "club-schedule/{team}/week/now", options);
+export async function getCurrentTeamScheduleWeek(options: IClubScheduleWeekNowInput): Promise<IResponse<IClubScheduleWeekNowOutput>> {
+  return await sendGetRequest<IClubScheduleWeekNowOutput>(BASE_URL.NORMAL, "club-schedule/{team}/week/now", options);
 }
 
 /**
@@ -64,6 +56,6 @@ export async function getCurrentTeamScheduleWeek(options: ICurrentTeamScheduleWe
  * @param options The team and week to retrieve the schedule for.
  * @returns The team schedule for the team and week.
  */
-export async function getTeamScheduleWeek(options: ITeamScheduleWeekInput): Promise<IResponse<ITeamScheduleWeekOutput>> {
-  return await sendGetRequest<ITeamScheduleWeekOutput>(BASE_URL.NORMAL, "club-schedule/{team}/week/{date}", options);
+export async function getTeamScheduleWeek(options: IClubScheduleWeekInput): Promise<IResponse<IClubScheduleWeekOutput>> {
+  return await sendGetRequest<IClubScheduleWeekOutput>(BASE_URL.NORMAL, "club-schedule/{team}/week/{date}", options);
 }

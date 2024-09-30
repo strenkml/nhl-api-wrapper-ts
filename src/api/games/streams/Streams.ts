@@ -1,4 +1,4 @@
-import { IWhereToWatchInput, IWhereToWatchOutput } from "../../../interfaces/Games";
+import { IWhereToWatchInput, IWhereToWatchOutput } from "../../../interfaces/where-to-watch/WhereToWatch";
 import { BASE_URL, IResponse, sendGetRequest } from "../../../internal/Requests";
 
 /**

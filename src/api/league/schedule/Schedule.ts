@@ -1,19 +1,15 @@
-import {
-  ICurrentScheduleCalendarOutput,
-  ICurrentScheduleWeekOutput,
-  IScheduleCalendarInput,
-  IScheduleCalendarOutput,
-  IScheduleWeekInput,
-  IScheduleWeekOutput,
-} from "../../../interfaces/League";
+import { IScheduleCalendarInput, IScheduleCalendarOutput } from "../../../interfaces/schedule/calendar/ScheduleCalendar";
+import { IScheduleCalendarNowOutput } from "../../../interfaces/schedule/calendar/ScheduleCalendarNow";
+import { IScheduleByDateInput, IScheduleByDateOutput } from "../../../interfaces/schedule/ScheduleByDate";
+import { IScheduleNowOutput } from "../../../interfaces/schedule/ScheduleNow";
 import { BASE_URL, IResponse, sendGetRequest, sendGetRequestWithoutParams } from "../../../internal/Requests";
 
 /**
  * Retrieve the current schedule week.
  * @returns The current schedule week.
  */
-export async function getCurrentScheduleWeek(): Promise<IResponse<ICurrentScheduleWeekOutput>> {
-  return await sendGetRequestWithoutParams<ICurrentScheduleWeekOutput>(BASE_URL.NORMAL, "schedule/now");
+export async function getCurrentScheduleWeek(): Promise<IResponse<IScheduleNowOutput>> {
+  return await sendGetRequestWithoutParams<IScheduleNowOutput>(BASE_URL.NORMAL, "schedule/now");
 }
 
 /**
@@ -21,16 +17,16 @@ export async function getCurrentScheduleWeek(): Promise<IResponse<ICurrentSchedu
  * @param options The date to retrieve the schedule week for.
  * @returns The schedule week for the date.
  */
-export async function getScheduleWeek(options: IScheduleWeekInput): Promise<IResponse<IScheduleWeekOutput>> {
-  return await sendGetRequest<IScheduleWeekOutput>(BASE_URL.NORMAL, "schedule/{date}", options);
+export async function getScheduleWeek(options: IScheduleByDateInput): Promise<IResponse<IScheduleByDateOutput>> {
+  return await sendGetRequest<IScheduleByDateOutput>(BASE_URL.NORMAL, "schedule/{date}", options);
 }
 
 /**
- * Retrieve the currentschedule calendar.
+ * Retrieve the current schedule calendar.
  * @returns The schedule calendar for the current day.
  */
-export async function getCurrentScheduleCalendar(): Promise<IResponse<ICurrentScheduleCalendarOutput>> {
-  return await sendGetRequestWithoutParams<ICurrentScheduleCalendarOutput>(BASE_URL.NORMAL, "schedule-calendar/now");
+export async function getCurrentScheduleCalendar(): Promise<IResponse<IScheduleCalendarNowOutput>> {
+  return await sendGetRequestWithoutParams<IScheduleCalendarNowOutput>(BASE_URL.NORMAL, "schedule-calendar/now");
 }
 
 /**

@@ -1,18 +1,19 @@
-import { BASE_URL, IResponse, sendGetRequest } from "../../../internal/Requests";
+import { ISkaterStatsLeadersInput, ISkaterStatsLeadersOutput } from "../../../interfaces/stats/skater/leaders/SkaterStatsLeaders";
 import {
-  ICurrentSkaterStatsLeadersInput,
-  ICurrentSkaterStatsLeadersOutput,
-  ISkaterStatsLeadersSeasonInput,
-  ISkaterStatsLeadersSeasonOutput,
-} from "../../../interfaces/Players";
+  ISkaterStatsLeadersCurrentInput,
+  ISkaterStatsLeadersCurrentOutput,
+} from "../../../interfaces/stats/skater/leaders/SkaterStatsLeadersCurrent";
+import { BASE_URL, IResponse, sendGetRequest } from "../../../internal/Requests";
+
+import * as stats from "./stats/SkaterStats";
 
 /**
  * Retrieve the current skater stats leaders.
  * @param options The options to retrieve the current skater stats leaders.
  * @returns The current skater stats leaders.
  */
-export async function getCurrentSkaterStatsLeaders(options: ICurrentSkaterStatsLeadersInput): Promise<IResponse<ICurrentSkaterStatsLeadersOutput>> {
-  return await sendGetRequest<ICurrentSkaterStatsLeadersOutput>(BASE_URL.NORMAL, "skater-stats-leaders/current", options);
+async function getCurrentSkaterStatsLeaders(options: ISkaterStatsLeadersCurrentInput): Promise<IResponse<ISkaterStatsLeadersCurrentOutput>> {
+  return await sendGetRequest<ISkaterStatsLeadersCurrentOutput>(BASE_URL.NORMAL, "skater-stats-leaders/current", options);
 }
 
 /**
@@ -20,6 +21,12 @@ export async function getCurrentSkaterStatsLeaders(options: ICurrentSkaterStatsL
  * @param options The options to retrieve the skater stats leaders.
  * @returns The skater stats leaders for the season and game type.
  */
-export async function getSkaterStatsLeadersSeason(options: ISkaterStatsLeadersSeasonInput): Promise<IResponse<ISkaterStatsLeadersSeasonOutput>> {
-  return await sendGetRequest<ISkaterStatsLeadersSeasonOutput>(BASE_URL.NORMAL, "skater-stats-leaders/{season}/{gameType}", options);
+async function getSkaterStatsLeadersSeason(options: ISkaterStatsLeadersInput): Promise<IResponse<ISkaterStatsLeadersOutput>> {
+  return await sendGetRequest<ISkaterStatsLeadersOutput>(BASE_URL.NORMAL, "skater-stats-leaders/{season}/{gameType}", options);
 }
+
+export default {
+  getCurrentSkaterStatsLeaders,
+  getSkaterStatsLeadersSeason,
+  stats,
+};

@@ -1,13 +1,8 @@
-import {
-  IClubStatsSeasonAndGameTypeInput,
-  IClubStatsSeasonAndGameTypeOutput,
-  IClubStatsSeasonInput,
-  IClubStatsSeasonOutput,
-  ICurrentClubStatsInput,
-  ICurrentClubStatsOutput,
-  ICurrentTeamScoreboardInput,
-  ICurrentTeamScoreboardOutput,
-} from "../../../interfaces/Teams";
+import { IScoreboardNowInput } from "../../../interfaces/club/scoreboard/ScoreboardNow";
+import { IClubStatsInput, IClubStatsOutput } from "../../../interfaces/club/stats/ClubStats";
+import { IClubStatsNowInput, IClubStatsNowOutput } from "../../../interfaces/club/stats/ClubStatsNow";
+import { IClubStatsSeasonInput, IClubStatsSeasonOutput } from "../../../interfaces/club/stats/ClubStatsSeason";
+import { IScoreboardNowOutput } from "../../../interfaces/scoreboard/ScoreboardNow";
 import { BASE_URL, IResponse, sendGetRequest } from "../../../internal/Requests";
 
 /**
@@ -15,8 +10,8 @@ import { BASE_URL, IResponse, sendGetRequest } from "../../../internal/Requests"
  * @param options The team to retrieve the club stats for.
  * @returns The current club stats.
  */
-export async function getCurrentClubStats(options: ICurrentClubStatsInput): Promise<IResponse<ICurrentClubStatsOutput>> {
-  return await sendGetRequest<ICurrentClubStatsOutput>(BASE_URL.NORMAL, "club-stats/{team}/now", options);
+export async function getCurrentClubStats(options: IClubStatsNowInput): Promise<IResponse<IClubStatsNowOutput>> {
+  return await sendGetRequest<IClubStatsNowOutput>(BASE_URL.NORMAL, "club-stats/{team}/now", options);
 }
 
 /**
@@ -33,10 +28,8 @@ export async function getClubStatsSeason(options: IClubStatsSeasonInput): Promis
  * @param options The team, season, and game type to retrieve the stats for.
  * @returns The stats for the team, season, and game type.
  */
-export async function getClubStatsSeasonAndGameType(
-  options: IClubStatsSeasonAndGameTypeInput,
-): Promise<IResponse<IClubStatsSeasonAndGameTypeOutput>> {
-  return await sendGetRequest<IClubStatsSeasonAndGameTypeOutput>(BASE_URL.NORMAL, "club-stats/{team}/{season}/{gameType}", options);
+export async function getClubStatsSeasonAndGameType(options: IClubStatsInput): Promise<IResponse<IClubStatsOutput>> {
+  return await sendGetRequest<IClubStatsOutput>(BASE_URL.NORMAL, "club-stats/{team}/{season}/{gameType}", options);
 }
 
 /**
@@ -44,6 +37,6 @@ export async function getClubStatsSeasonAndGameType(
  * @param options The team to retrieve the scoreboard for.
  * @returns The current team scoreboard.
  */
-export async function getCurrentTeamScoreboard(options: ICurrentTeamScoreboardInput): Promise<IResponse<ICurrentTeamScoreboardOutput>> {
-  return await sendGetRequest<ICurrentTeamScoreboardOutput>(BASE_URL.NORMAL, "scoreboard/{team}/now", options);
+export async function getCurrentTeamScoreboard(options: IScoreboardNowInput): Promise<IResponse<IScoreboardNowOutput>> {
+  return await sendGetRequest<IScoreboardNowOutput>(BASE_URL.NORMAL, "scoreboard/{team}/now", options);
 }

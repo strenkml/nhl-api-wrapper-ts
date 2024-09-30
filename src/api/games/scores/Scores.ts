@@ -1,12 +1,14 @@
-import { ICurrentDailyScoresOutput, ICurrentScoreboardOutput, IDailyScoresInput, IDailyScoresOutput } from "../../../interfaces/Games";
+import { IDailyScoresByDateInput, IDailyScoresByDateOutput } from "../../../interfaces/score/DailyScoresByDate";
+import { IDailyScoresNowOutput } from "../../../interfaces/score/DailyScoresNow";
+import { IScoreboardNowOutput } from "../../../interfaces/scoreboard/ScoreboardNow";
 import { BASE_URL, IResponse, sendGetRequest, sendGetRequestWithoutParams } from "../../../internal/Requests";
 
 /**
  * Retrieve the current daily scores.
  * @returns The current daily scores.
  */
-export async function getCurrentDailyScores(): Promise<IResponse<ICurrentDailyScoresOutput>> {
-  return await sendGetRequestWithoutParams<ICurrentDailyScoresOutput>(BASE_URL.NORMAL, "score/now");
+export async function getCurrentDailyScores(): Promise<IResponse<IDailyScoresNowOutput>> {
+  return await sendGetRequestWithoutParams<IDailyScoresNowOutput>(BASE_URL.NORMAL, "score/now");
 }
 
 /**
@@ -14,14 +16,14 @@ export async function getCurrentDailyScores(): Promise<IResponse<ICurrentDailySc
  * @param options The date to retrieve the scores for.
  * @returns The daily scores for the date.
  */
-export async function getDailyScores(options: IDailyScoresInput): Promise<IResponse<IDailyScoresOutput>> {
-  return await sendGetRequest<IDailyScoresOutput>(BASE_URL.NORMAL, "score/{date}", options);
+export async function getDailyScores(options: IDailyScoresByDateInput): Promise<IResponse<IDailyScoresByDateOutput>> {
+  return await sendGetRequest<IDailyScoresByDateOutput>(BASE_URL.NORMAL, "score/{date}", options);
 }
 
 /**
  * Retrieve the scoreboard.
  * @returns The scoreboard.
  */
-export async function getScoreboard(): Promise<IResponse<ICurrentScoreboardOutput>> {
-  return await sendGetRequestWithoutParams<ICurrentScoreboardOutput>(BASE_URL.NORMAL, "scoreboard/now");
+export async function getScoreboard(): Promise<IResponse<IScoreboardNowOutput>> {
+  return await sendGetRequestWithoutParams<IScoreboardNowOutput>(BASE_URL.NORMAL, "scoreboard/now");
 }

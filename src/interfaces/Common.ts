@@ -1,25 +1,25 @@
 /* -------------------------------------------------------------------------- */
 /*                                Common Inputs                               */
 /* -------------------------------------------------------------------------- */
-export interface IPlayerInput {
+export interface ICommonPlayerInput {
   /**
    * Player ID
    */
   playerId: number;
 }
 
-export interface ITeamInput {
+export interface ICommonTeamInput {
   /**
    * Three-letter team code
    */
-  team: string;
+  team: TEAM_TRI_CODE;
 }
 
-export interface ITeamSeasonGameTypeInput {
+export interface ICommonTeamSeasonGameTypeInput {
   /**
    * Three-letter team code
    */
-  team: string;
+  team: TEAM_TRI_CODE;
 
   /**
    * Season in YYYYYYYY format, where the first four digits represent the start year of the season, and the last four digits represent the end year.
@@ -32,11 +32,11 @@ export interface ITeamSeasonGameTypeInput {
   gameType: GAME_TYPE;
 }
 
-export interface ITeamSeasonInput {
+export interface ICommonTeamSeasonInput {
   /**
    * Three-letter team code
    */
-  team: string;
+  team: TEAM_TRI_CODE;
 
   /**
    * Season in YYYYYYYY format, where the first four digits represent the start year of the season, and the last four digits represent the end year.
@@ -44,11 +44,11 @@ export interface ITeamSeasonInput {
   season: number;
 }
 
-export interface ITeamMonthInput {
+export interface ICommonTeamMonthInput {
   /**
    * Three-letter team code
    */
-  team: string;
+  team: TEAM_TRI_CODE;
 
   /**
    * Month in YYYY-MM format.
@@ -56,11 +56,11 @@ export interface ITeamMonthInput {
   month: string;
 }
 
-export interface ITeamDateInput {
+export interface ICommonTeamDateInput {
   /**
    * Three-letter team code
    */
-  team: string;
+  team: TEAM_TRI_CODE;
 
   /**
    * Date in YYYY-MM-DD format
@@ -68,7 +68,7 @@ export interface ITeamDateInput {
   date: string;
 }
 
-export interface IPlayerSeasonGameTypeInput {
+export interface ICommonPlayerSeasonGameTypeInput {
   /**
    * Player ID
    */
@@ -85,7 +85,7 @@ export interface IPlayerSeasonGameTypeInput {
   gameType: GAME_TYPE;
 }
 
-export interface ICategoriesLimitInput {
+export interface ICommonCategoriesLimitInput {
   /**
    * The categories of stats.
    */
@@ -97,7 +97,7 @@ export interface ICategoriesLimitInput {
   limit?: number;
 }
 
-export interface ISeasonGameTypeCategoriesLimitInput extends ICategoriesLimitInput {
+export interface ICommonSeasonGameTypeCategoriesLimitInput extends ICommonCategoriesLimitInput {
   /**
    * Season in YYYYYYYY format, where the first four digits represent the start year of the season, and the last four digits represent the end year.
    */
@@ -109,42 +109,42 @@ export interface ISeasonGameTypeCategoriesLimitInput extends ICategoriesLimitInp
   gameType: GAME_TYPE;
 }
 
-export interface IDateInput {
+export interface ICommonDateInput {
   /**
    * Date in YYYY-MM-DD format
    */
   date: string;
 }
 
-export interface IGameIdInput {
+export interface ICommonGameIdInput {
   /**
    * Game ID
    */
   gameId: number;
 }
 
-export interface ISeasonInput {
+export interface ICommonSeasonInput {
   /**
    * Season in YYYYYYYY format, where the first four digits represent the start year of the season, and the last four digits represent the end year.
    */
   season: number;
 }
 
-export interface IYearInput {
+export interface ICommonYearInput {
   /**
    * Year in YYYY format
    */
   year: number;
 }
 
-export interface ILangInput {
+export interface ICommonLangInput {
   /**
    * Language code
    */
   lang: string;
 }
 
-export interface ILangAttrInput {
+export interface ICommonLangAttrInput {
   /**
    * Language code
    */
@@ -163,4 +163,75 @@ export enum GAME_TYPE {
   PRESEASON = 1,
   REGULAR_SEASON = 2,
   POSTSEASON = 3,
+}
+
+export enum PROSPECT_CATEGORY {
+  NORTH_AMERICAN_SKATER = 1,
+  INTERNATIONAL_SKATER = 2,
+  NORTH_AMERICAN_GOALIE = 3,
+  INTERNATIONAL_GOALIE = 4,
+}
+
+export enum TEAM_TRI_CODE {
+  ATLANTA_THRASHERS = "ATL",
+  HARTFORD_WHALERS = "HFD",
+  QUEBEC_NORDIQUES = "QUE",
+  WINNIPEG_JETS_1979 = "WIN",
+  COLORADO_ROCKIES = "CLR",
+  OTTAWA_SENATORS_1917 = "SEN",
+  HAMILTON_TIGERS = "HAM",
+  PITTSBURGH_PIRATES = "PIR",
+  PHILADELPHIA_QUAKERS = "QUA",
+  DETROIT_COUGARS = "DCG",
+  MONTREAL_WANDERERS = "MWN",
+  QUEBEC_BULLDOGS = "QBD",
+  MONTREAL_MAROONS = "MMR",
+  NEW_YORK_AMERICANS = "NYA",
+  ST_LOUIS_EAGLES = "SLE",
+  OAKLAND_SEALS = "OAK",
+  ATLANTA_FLAMES = "AFM",
+  KANSAS_CITY_SCOUTS = "KCS",
+  DETROIT_FALCONS = "DFL",
+  BROOKLYN_AMERICANS = "BRK",
+  TORONTO_ARENAS = "TAN",
+  TORONTO_ST_PATRICKS = "TSP",
+  NHL = "NHL",
+  DETROIT_RED_WINGS = "DET",
+  BOSTON_BRUINS = "BOS",
+  PITTSBURGH_PENGUINS = "PIT",
+  TAMPA_BAY_LIGHTNING = "TBL",
+  PHILADELPHIA_FLYERS = "PHI",
+  CAROLINA_HURRICANES = "CAR",
+  CALGARY_FLAMES = "CGY",
+  MONTREAL_CANADIENS = "MTL",
+  WASHINGTON_CAPITALS = "WSH",
+  VANCOUVER_CANUCKS = "VAN",
+  COLORADO_AVALANCHE = "COL",
+  NASHVILLE_PREDATORS = "NSH",
+  ANAHEIM_DUCKS = "ANA",
+  VEGAS_GOLDEN_KNIGHTS = "VGK",
+  DALLAS_STARS = "DAL",
+  PHOENIX_COYOTES = "PHX",
+  CHICAGO_BLACKHAWKS = "CHI",
+  NEW_YORK_RANGERS = "NYR",
+  FLORIDA_PANTHERS = "FLA",
+  EDMONTON_OILERS = "EDM",
+  MINNESOTA_WILD = "MIN",
+  ST_LOUIS_BLUES = "STL",
+  NEW_YORK_ISLANDERS = "NYI",
+  LOS_ANGELES_KINGS = "LAK",
+  TBD = "TBD",
+  BUFFALO_SABRES = "BUF",
+  OTTAWA_SENATORS = "OTT",
+  TORONTO_MAPLE_LEAFS = "TOR",
+  NEW_JERSEY_DEVILS = "NJD",
+  WINNIPEG_JETS = "WPG",
+  SEATTLE_KRAKEN = "SEA",
+  SAN_JOSE_SHARKS = "SJS",
+  ARIZONA_COYOTES = "ARI",
+  UTAH_HOCKEY_CLUB = "UTA",
+  COLUMBUS_BLUE_JACKETS = "CBJ",
+  MINNESOTA_NORTH_STARS = "MNS",
+  CLEVELAND_BARONS = "CLE",
+  CALIFORNIA_GOLDEN_SEALS = "CGS",
 }

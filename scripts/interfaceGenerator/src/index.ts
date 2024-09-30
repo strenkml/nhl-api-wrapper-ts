@@ -292,7 +292,7 @@ async function main() {
     const scoreboardNowData2 = await getRequest(getScoreboardNow2);
     const scoreboardNowData3 = await getRequest(getScoreboardNow3);
 
-    const genScoreboardNow = new Gen("IScoreboardNowOutput", "./output/interfaces/scoreboard", {
+    const genScoreboardNow = new Gen("IScoreboardNowOutput", "./output/interfaces/club/scoreboard", {
       backupOldFile: false,
       fileName: "ScoreboardNow",
       jsonVariations: [scoreboardNowData1, scoreboardNowData2, scoreboardNowData3],
@@ -1303,22 +1303,6 @@ async function main() {
     genConfig.generateInterfaces();
   } catch (error) {
     console.error("Error fetching config data:", error);
-  }
-
-  // 68. /ping
-  try {
-    const pingServer = "https://api.nhle.com/stats/rest/ping";
-
-    const pingServerData = await getRequest(pingServer);
-
-    const genPingServer = new Gen("IPingServerOutput", "./output/interfaces/ping", {
-      backupOldFile: false,
-      fileName: "PingServer",
-      jsonVariations: [pingServerData],
-    });
-    genPingServer.generateInterfaces();
-  } catch (error) {
-    console.error("Error pinging server:", error);
   }
 
   // 69. /{lang}/country
