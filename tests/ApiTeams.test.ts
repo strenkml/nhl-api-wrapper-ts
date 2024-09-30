@@ -1,7 +1,5 @@
 import nhlApi from "../src/index";
 import { GAME_TYPE, TEAM_TRI_CODE } from "../src/interfaces/Common";
-import { IStanding } from "../dist/interfaces/Teams";
-import { IStandingsSeasonOutput } from "../src/interfaces/standings/StandingsSeason";
 
 describe("TeamsApi", () => {
   afterEach(() => {
