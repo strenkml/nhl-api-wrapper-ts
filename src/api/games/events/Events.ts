@@ -10,7 +10,7 @@ import { BASE_URL, IResponse, sendGetRequest } from "../../../internal/Requests"
  * @returns The play-by-play for the game.
  */
 export async function getPlayByPlay(options: IGamePlayByPlayInput): Promise<IResponse<IGamePlayByPlayOutput>> {
-  return await sendGetRequest<IGamePlayByPlayOutput>(BASE_URL.NORMAL, "gamecenter/{game-id}/play-by-play", options);
+  return await sendGetRequest<IGamePlayByPlayOutput>(BASE_URL.NORMAL, "gamecenter/{gameId}/play-by-play", options);
 }
 
 /**
@@ -19,7 +19,7 @@ export async function getPlayByPlay(options: IGamePlayByPlayInput): Promise<IRes
  * @returns The landing page for the game.
  */
 export async function getGameLandingPage(options: IGameLandingInput): Promise<IResponse<IGameLandingOutput>> {
-  return await sendGetRequest<IGameLandingOutput>(BASE_URL.NORMAL, "gamecenter/{game-id}/landing", options);
+  return await sendGetRequest<IGameLandingOutput>(BASE_URL.NORMAL, "gamecenter/{gameId}/landing", options);
 }
 
 /**
@@ -28,7 +28,7 @@ export async function getGameLandingPage(options: IGameLandingInput): Promise<IR
  * @returns The box score for the game.
  */
 export async function getBoxScore(options: IGameBoxscoreInput): Promise<IResponse<IGameBoxscoreOutput>> {
-  return await sendGetRequest<IGameBoxscoreOutput>(BASE_URL.NORMAL, "gamecenter/{game-id}/boxscore", options);
+  return await sendGetRequest<IGameBoxscoreOutput>(BASE_URL.NORMAL, "gamecenter/{gameId}/boxscore", options);
 }
 
 /**
@@ -37,5 +37,5 @@ export async function getBoxScore(options: IGameBoxscoreInput): Promise<IRespons
  * @returns The game story for the game.
  */
 export async function getGameStory(options: IGameStoryInput): Promise<IResponse<IGameStoryOutput>> {
-  return await sendGetRequest<IGameStoryOutput>(BASE_URL.NORMAL, "wsc/game-story/{game-id}", options);
+  return await sendGetRequest<IGameStoryOutput>(BASE_URL.NORMAL, "wsc/game-story/{gameId}", options);
 }

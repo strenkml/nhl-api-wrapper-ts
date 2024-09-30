@@ -6,6 +6,6 @@ import { BASE_URL, IResponse, sendGetRequest } from "../../../internal/Requests"
  * @param options The options to retrieve the streaming options for.
  * @returns The streaming options.
  */
-export async function getWhereToWatch(options: IWhereToWatchInput): Promise<IResponse<IWhereToWatchOutput>> {
+export async function getWhereToWatch(options: IWhereToWatchInput = {}): Promise<IResponse<IWhereToWatchOutput>> {
   return await sendGetRequest<IWhereToWatchOutput>(BASE_URL.NORMAL, "where-to-watch", options);
 }

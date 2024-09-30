@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from "axios";
 
 export enum BASE_URL {
   NORMAL = "https://api-web.nhle.com/v1/",
-  STAT = "https://api.nhle.com/stats/rest/en/",
+  STAT = "https://api.nhle.com/stats/rest/",
 }
 
 export interface IResponse<T> {

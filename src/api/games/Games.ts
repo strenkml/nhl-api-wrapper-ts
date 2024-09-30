@@ -1,9 +1,9 @@
-import * as Scores from "./scores/Scores";
-import * as Streams from "./streams/Streams";
-import * as Events from "./events/Events";
-import * as Network from "./network/Network";
-import * as Odds from "./odds/Odds";
-import { IMetaGameInfoOutput } from "../../interfaces/meta/game/MetaGameInfo";
+import * as scores from "./scores/Scores";
+import * as streams from "./streams/Streams";
+import * as events from "./events/Events";
+import * as network from "./network/Network";
+import * as odds from "./odds/Odds";
+import { IMetaGameInfoInput, IMetaGameInfoOutput } from "../../interfaces/meta/game/MetaGameInfo";
 import { BASE_URL, IResponse, sendGetRequest } from "../../internal/Requests";
 import { IGameInput, IGameOutput } from "../../interfaces/stats/game/Game";
 import { IShiftChartsInput, IShiftChartsOutput } from "../../interfaces/stats/shiftcharts/ShiftCharts";
@@ -13,7 +13,7 @@ import { IShiftChartsInput, IShiftChartsOutput } from "../../interfaces/stats/sh
  * @param options The game ID to retrieve the game information for.
  * @returns The game information for the game.
  */
-async function getGameInfo(options: IMetaGameInfoOutput): Promise<IResponse<IMetaGameInfoOutput>> {
+async function getGameInfo(options: IMetaGameInfoInput): Promise<IResponse<IMetaGameInfoOutput>> {
   return await sendGetRequest<IMetaGameInfoOutput>(BASE_URL.NORMAL, "meta/game/{gameId}", options);
 }
 
@@ -32,15 +32,15 @@ async function getStatGameInfo(options: IGameInput): Promise<IResponse<IGameOutp
  * @returns The shift charts for the game.
  */
 async function getShiftCharts(options: IShiftChartsInput): Promise<IResponse<IShiftChartsOutput>> {
-  return await sendGetRequest<IShiftChartsOutput>(BASE_URL.STAT, "{lang}/shiftcharts?cayenneExp=gameId={game_id}", options);
+  return await sendGetRequest<IShiftChartsOutput>(BASE_URL.STAT, "{lang}/shiftcharts?cayenneExp=gameId={gameId}", options);
 }
 
 export default {
-  Scores,
-  Streams,
-  Events,
-  Network,
-  Odds,
+  scores,
+  streams,
+  events,
+  network,
+  odds,
   getGameInfo,
   getStatGameInfo,
   getShiftCharts,
