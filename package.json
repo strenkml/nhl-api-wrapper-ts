@@ -1,7 +1,7 @@
 {
-  "name": "nhl-api",
+  "name": "nhl-api-wrapper-ts",
   "version": "1.0.0",
-  "description": "Node library for accessing the NHL API",
+  "description": "Node Wrapper library for accessing the NHL API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -10,10 +10,12 @@
     "lintfix": "npx eslint . --fix",
     "format": "npx prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
     "update": "npx npm-check -u",
-    "docs": "npx typedoc --entryPointStrategy expand ./src --name NHL-API --out ./docs"
+    "docs": "npx typedoc --entryPointStrategy expand ./src --name nhl-api-wrapper-ts --out ./docs"
   },
   "keywords": [
-    "nhl"
+    "nhl",
+    "ts",
+    "api"
   ],
   "author": "Matt Strenk",
   "license": "GPL-3.0",
