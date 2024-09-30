@@ -1,7 +1,7 @@
-import * as Roster from "./roster/Roster";
-import * as Schedule from "./schedule/Schedule";
-import * as Stats from "./stats/Stats";
-import * as Standings from "./standings/Standings";
+import * as roster from "./roster/Roster";
+import * as schedule from "./schedule/Schedule";
+import * as stats from "./stats/Stats";
+import * as standings from "./standings/Standings";
 import { ITeamsInput, ITeamsOutput } from "../../interfaces/stats/teams/Teams";
 import { BASE_URL, IResponse, sendGetRequest } from "../../internal/Requests";
 import { ITeamStatsInput, ITeamStatsOutput } from "../../interfaces/stats/team/TeamStats";
@@ -35,10 +35,10 @@ async function getFranchiseInfo(options: IFranchisesInput): Promise<IResponse<IF
 }
 
 export default {
-  Roster,
-  Schedule,
-  Stats,
-  Standings,
+  roster,
+  schedule,
+  stats,
+  standings,
   getTeams,
   getTeamStats,
   getFranchiseInfo,

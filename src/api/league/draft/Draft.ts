@@ -12,12 +12,12 @@ export async function getCurrentDraftRankings(): Promise<IResponse<IDraftRanking
 }
 
 /**
- * Retrieve a list of all draft prospects by category of prospect for a specific season
- * @param options The season to retrieve the draft rankings for.
- * @returns The draft rankings for the season.
+ * Retrieve a list of all draft prospects by category of prospect for a specific year
+ * @param options The year to retrieve the draft rankings for.
+ * @returns The draft rankings for the year.
  */
 export async function getDraftRankings(options: IDraftRankingsInput): Promise<IResponse<IDraftRankingsNowOutput>> {
-  return await sendGetRequest<IDraftRankingsNowOutput>(BASE_URL.NORMAL, "draft/rankings/{season}/{prospectCategory}", options);
+  return await sendGetRequest<IDraftRankingsNowOutput>(BASE_URL.NORMAL, "draft/rankings/{year}/{prospectCategory}", options);
 }
 
 /**

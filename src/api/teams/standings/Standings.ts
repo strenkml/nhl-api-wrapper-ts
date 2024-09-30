@@ -7,7 +7,7 @@ import { BASE_URL, IResponse, sendGetRequest, sendGetRequestWithoutParams } from
  * Retrieve the current standings.
  * @returns The current standings.
  */
-export async function getCurentStandings(): Promise<IResponse<IStandingsNowOutput>> {
+export async function getCurrentStandings(): Promise<IResponse<IStandingsNowOutput>> {
   return await sendGetRequestWithoutParams<IStandingsNowOutput>(BASE_URL.NORMAL, "standings/now");
 }
 

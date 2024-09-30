@@ -1,7 +1,7 @@
-import * as Schedule from "./schedule/Schedule";
-import * as Playoffs from "./playoffs/Playoffs";
-import * as Seasons from "./seasons/Seasons";
-import * as Draft from "./draft/Draft";
+import * as schedule from "./schedule/Schedule";
+import * as playoffs from "./playoffs/Playoffs";
+import * as seasons from "./seasons/Seasons";
+import * as draft from "./draft/Draft";
 
 import { BASE_URL, IResponse, sendGetRequestWithoutParams } from "../../internal/Requests";
 import { IMetaInfoOutput } from "../../interfaces/meta/MetaInfo";
@@ -11,9 +11,9 @@ async function getMeta(): Promise<IResponse<IMetaInfoOutput>> {
 }
 
 export default {
-  Schedule,
-  Playoffs,
-  Seasons,
-  Draft,
+  schedule,
+  playoffs,
+  seasons,
+  draft,
   getMeta,
 };
