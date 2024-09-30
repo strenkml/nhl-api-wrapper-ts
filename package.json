@@ -7,7 +7,7 @@
   "scripts": {
     "test": "jest",
     "build": "npx tsc",
-    "build:clear": "rm -rf dist; npm run build",
+    "build:clean": "rm -rf dist; npm run build",
     "lint": "npx eslint .",
     "lintfix": "npx eslint . --fix",
     "format": "npx prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
